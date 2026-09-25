@@ -47,13 +47,11 @@ PhosView::run_app()
 
 ## Tutorials
 
-[How to use PhosView?]()
+[How to use PhosView?](book/index.qmd)
 
 
 ```r
 library(PhosView)
-
-
 ```
 
 ## Citation
