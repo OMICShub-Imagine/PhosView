@@ -47,7 +47,7 @@ PhosView::run_app()
 
 ## Tutorials
 
-[How to use PhosView?](book/index.qmd)
+[How to use PhosView?](docs/index.html)
 
 
 ```r
