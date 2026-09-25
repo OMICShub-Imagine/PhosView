@@ -1,0 +1,40 @@
+project:
+  type: book
+  output-dir: ../docs
+
+book:
+  title: "PhosView User Guide"
+  author: "Kévin Roger"
+  date: "07/23/2026"
+
+  sidebar:
+    logo: images/PhosView_logo.png
+
+  chapters:
+    - index.qmd
+    - 01_installation.qmd
+    - 02_getting_started.qmd
+    - 03_global_analysis.qmd
+    - 04_phospho_analysis.qmd
+    - 05_integration_global_phospho.qmd
+    - 06_exports.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-fold: false
+    fig-cap-location: bottom
+    lightbox: true
+
+  pdf:
+    documentclass: scrreprt
+
+
+

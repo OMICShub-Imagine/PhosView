@@ -1,0 +1,19 @@
+# RStudio
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# R package documentation
+inst/doc
+
+# Quarto
+/.quarto/
+**/*.quarto_ipynb
+**/.quarto/
+
+# renv
+renv/library/
+renv/staging/
+renv/sandbox/
+renv/tmp/

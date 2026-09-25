@@ -1,0 +1,282 @@
+[
+  {
+    "objectID": "01_introduction.html",
+    "href": "01_introduction.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. (USA) 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PhosView User Guide",
+    "section": "",
+    "text": "Welcome\nWelcome to the PhosView User Guide.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#motivation",
+    "href": "index.html#motivation",
+    "title": "PhosView User Guide",
+    "section": "🎯 Motivation",
+    "text": "🎯 Motivation\nThe goal of this User Guide is to allow users to be able to run a phosphoproteomics analysis along with the analysis of the non-enriched sample using the PhosView ShinyApp from A to Z.\nNote that the PhosView is mainly based on the use of proteoDA, clusterProfiler, PhosR and pathview",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#citation",
+    "href": "index.html#citation",
+    "title": "PhosView User Guide",
+    "section": "📝 Citation",
+    "text": "📝 Citation\n\nByrum S, Yuan Z, Fu Y (2026). proteoDA: Streamlined Differential Abundance Analysis of Proteomic Data. R package version 2.0.0, (https://github.com/ByrumLab/proteoDA).\nStefan Graw, Jillian Tang, Maroof K Zafar, Alicia K Byrd, Chris Bolden, Eric C. Peterson, and Stephanie D Byrum. proteiNorm – A User-Friendly Tool for Normalization and Analysis of TMT and Label-Free Protein Quantification. ACS Omega 2020 5 (40), 25625-25633. doi: 10.1021/acsomega.0c02564\nS Xu, E Hu, Y Cai, Z Xie, X Luo, L Zhan, W Tang, Q Wang, B Liu, R Wang, W Xie, T Wu, L Xie, G Yu. Using clusterProfiler to characterize multiomics data. Nature Protocols. 2024, 19(11):3292-3320\nKim HJ, Kim T, Hoffman NJ, Xiao D, James DE, Humphrey SJ, Yang P (2021). PhosR enables processing and functional analysis of phosphoproteomic data. Cell Reports 34(8). doi:10.1016/j.celrep.2021.108771\nKim HJ, Kim T, Xiao D, Yang P (2021). Protocol for the processing and downstream analysis of phosphoproteomic data with PhosR. STAR Protocols 2(2). doi:10.1016/j.xpro.2021.100585\nLuo, W. and Brouwer C., Pathview: an R/Bioconductor package for pathway-based data integration and visualization. Bioinformatics, 2013, 29(14): 1830-1831, doi: 10.1093/bioinformatics/btt285",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#book-structure",
+    "href": "index.html#book-structure",
+    "title": "PhosView User Guide",
+    "section": "📚 Book structure",
+    "text": "📚 Book structure",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#user-guide-structure",
+    "href": "index.html#user-guide-structure",
+    "title": "PhosView User Guide",
+    "section": "📚 User Guide structure",
+    "text": "📚 User Guide structure\nThis User Guide will be divided in 4 parts of different length:\n\nPart 1 (Global Analysis) describes how to run the analysis of your non-enriched samples.This will include loading of your data, preprocessing and statistical analysis.\nPart 2 (Phospho Analysis) describes how to run the analysis of your phospho-enriched samples. This will include loading of your data, preprocessing of the data including how to get first class phosphosite and statistical analysis.\nPart 3 (Global and Phospho Integration) show useful utilities to explore and integrate side-by-side your global and phospho data all together.\nPart 4 (Exports) will show you how to export your data in order to do further processing with R or also export an R session object to reload yoour session using the landing page.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#what-is-phosview",
+    "href": "index.html#what-is-phosview",
+    "title": "PhosView User Guide",
+    "section": "🎯 What is PhosView?",
+    "text": "🎯 What is PhosView?\nPhosView is an interactive Shiny application designed for the analysis of quantitative proteomics and phosphoproteomics datasets.\nThe application provides:\n\nDifferential abundance analysis\nQuality control plots\nVolcano plots\nProtein-level visualization\nPhosphosite-level analysis\nKinase-substrate enrichment\nPathway analysis\nIntegrated proteome/phosphoproteome interpretation\n\nNote that the PhosView is mainly based on the use of proteoDA, clusterProfiler, PhosR and pathview R packages.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "01_installation.html",
+    "href": "01_installation.html",
+    "title": "1  Installation",
+    "section": "",
+    "text": "1.1 Requirement\nIn order to install the PhosView R package, you will need to install R (&gt;= 4.1.0).\nThen run the following code:",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Installation</span>"
+    ]
+  },
+  {
+    "objectID": "02_getting_started.html",
+    "href": "02_getting_started.html",
+    "title": "2  Getting started",
+    "section": "",
+    "text": "2.1 Starting material\nAfter you install the PhosView R package, you will need to get different input files.\nPhosView allows to use different kind of input from 2 softwares (regarding the one that you choose to run your analysis):",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "02_getting_started.html#running-code",
+    "href": "02_getting_started.html#running-code",
+    "title": "2  Getting started",
+    "section": "2.2 Running Code",
+    "text": "2.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\nCode\n1 + 1\n\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "02_getting_started.html#getting-started",
+    "href": "02_getting_started.html#getting-started",
+    "title": "2  Getting started",
+    "section": "",
+    "text": "2.1.1 DIA-NN Academia (version &gt;=2.5)\nI work on the assumption that users know how to run a label free global analysis and a phospho-proteomics analysis on DIA-NN with the proper settings.\n\nreport.pg_matrix.tsv file exported from DIA-NN. This file corresponds to the quant table of your global experiment (non phopho-enriched sample).\nreport.phosphosites_90.tsv or report.phosphosites_99.tsv files exported from DIA-NN. This file corresponds to the quant table of your phospho experiment (phospho-enriched sample).\n\n\n\n2.1.2 Spectronaut (version &gt;=19)\nI work on the assumption that users know how to run a label free global analysis and a phospho-proteomics analysis on Spectronaut with the proper settings. This is pretty straightforward in Spectronaut by clicking on “Set up directDIA Analysis from Folder” and use the “BGS Factor Settings (default)” to run the global analysis and the “BGS Phospho PTM workflow” to run the phosphoproteomics analysis.\n\nreport file exported from Spectronaut using the PhosView_Global.rs schema (present in inst/extdata) that you can import in the Report tab in Spectronaut. This file corresponds to the quant table of your global experiment (non phopho-enriched sample).\nreport file exported from Spectronaut using the PhosView_Phospho.rs schema (present in inst/extdata) that you can import in the Report tab in Spectronaut. This file corresponds to the quant table of your phospho experiment (phospho-enriched sample).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "02_getting_started.html#starting-material",
+    "href": "02_getting_started.html#starting-material",
+    "title": "2  Getting started",
+    "section": "",
+    "text": "2.1.1 DIA-NN Academia (version &gt;=2.5)\nI work on the assumption that users know how to run a label free global analysis and a phospho-proteomics analysis on DIA-NN with the proper settings.\n\nreport.pg_matrix.tsv file exported from DIA-NN. This file corresponds to the quant table of your global experiment (non phopho-enriched samples).\nreport.phosphosites_90.tsv or report.phosphosites_99.tsv files exported from DIA-NN. This file corresponds to the quant table of your phospho experiment (phospho-enriched samples).\n\n\n\n2.1.2 Spectronaut (version &gt;=19)\nI work on the assumption that users know how to run a label free global analysis and a phospho-proteomics analysis on Spectronaut with the proper settings. This is pretty straightforward in Spectronaut by clicking on “Set up directDIA Analysis from Folder” and use the “BGS Factor Settings (default)” to run the global analysis and the “BGS Phospho PTM workflow” to run the phosphoproteomics analysis.\n\nreport file exported from Spectronaut using the PhosView_Global.rs schema (present in inst/extdata) that you can import in the Report tab in Spectronaut. This file corresponds to the quant table of your global experiment (non phospho-enriched samples).\nreport file exported from Spectronaut using the PhosView_Phospho.rs schema (present in inst/extdata) that you can import in the Report tab in Spectronaut. This file corresponds to the quant table of your phospho experiment (phospho-enriched samples).\n\n\n\n2.1.3 Run PhosView\nlibrary(PhosView)\nrun_app()",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "02_getting_started.html#run-phosview",
+    "href": "02_getting_started.html#run-phosview",
+    "title": "2  Getting started",
+    "section": "3.3 Run PhosView",
+    "text": "3.3 Run PhosView\nlibrary(PhosView)\nrun_app()",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "02_getting_started.html#landing-page",
+    "href": "02_getting_started.html#landing-page",
+    "title": "2  Getting started",
+    "section": "2.2 Landing page",
+    "text": "2.2 Landing page\nAfter executing the command run_app(), the app will open and a landing page will appear on your screen (see below).\n\n\n\nLanding page\n\n\nYou will have two possibilities:\n\nClick on “New analysis” if you run to run an analysis from scratch (next sections will detail this part).\nClick on “Load Session” if you want to reload your previous session by using a specific R object (I will come back later into that part in the {#sec-reload-session}).\n\nNow let’s start with a New Analysis by clicking on the “New Analysis” button !",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "01_installation.html#requirement",
+    "href": "01_installation.html#requirement",
+    "title": "1  Installation",
+    "section": "",
+    "text": "if (!require(\"remotes\")) install.packages(\"remotes\")\n\nremotes::install_github(\"OMICShub-Imagine/PhosView\")",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Installation</span>"
+    ]
+  },
+  {
+    "objectID": "02_getting_started.html#dia-nn-academia-version-2.5",
+    "href": "02_getting_started.html#dia-nn-academia-version-2.5",
+    "title": "2  Getting started",
+    "section": "3.1 DIA-NN Academia (version >=2.5)",
+    "text": "3.1 DIA-NN Academia (version &gt;=2.5)\nI work on the assumption that users know how to run a label free global analysis and a phospho-proteomics analysis on DIA-NN with the proper settings.\n\nreport.pg_matrix.tsv file exported from DIA-NN. This file corresponds to the quant table of your global experiment (non phopho-enriched samples).\nreport.phosphosites_90.tsv or report.phosphosites_99.tsv files exported from DIA-NN. This file corresponds to the quant table of your phospho experiment (phospho-enriched samples).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "02_getting_started.html#spectronaut-version-19",
+    "href": "02_getting_started.html#spectronaut-version-19",
+    "title": "2  Getting started",
+    "section": "3.2 Spectronaut (version >=19)",
+    "text": "3.2 Spectronaut (version &gt;=19)\nI work on the assumption that users know how to run a label free global analysis and a phospho-proteomics analysis on Spectronaut with the proper settings. This is pretty straightforward in Spectronaut by clicking on “Set up directDIA Analysis from Folder” and use the “BGS Factor Settings (default)” to run the global analysis and the “BGS Phospho PTM workflow” to run the phosphoproteomics analysis.\n\nreport file exported from Spectronaut using the PhosView_Global.rs schema (present in inst/extdata) that you can import in the Report tab in Spectronaut. This file corresponds to the quant table of your global experiment (non phospho-enriched samples).\nreport file exported from Spectronaut using the PhosView_Phospho.rs schema (present in inst/extdata) that you can import in the Report tab in Spectronaut. This file corresponds to the quant table of your phospho experiment (phospho-enriched samples).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "03_global_analysis.html",
+    "href": "03_global_analysis.html",
+    "title": "3  Global Analysis",
+    "section": "",
+    "text": "3.1 Global analysis\nAfter clicking on the “New analysis” button, you will land in the “Global Analysis” main tab that contain 6 subtabs (see below).\nEach subtab correspond to different preprocessing steps that you will need to perform sequentially. All these preprocessing step uses the proteoDA R package (Byrum et al. 2026)",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Global Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "03_global_analysis.html#global-analysis",
+    "href": "03_global_analysis.html#global-analysis",
+    "title": "3  Global Analysis",
+    "section": "",
+    "text": "Global analysis containing 6 processing steps\n\n\n\n\n3.1.1 DAlist creation\n\n\n\nGlobal analysis - DAList creation\n\n\n\n3.1.1.1 Step1 & Step2\nThis step corresponds to data import/loading. You will need to import your quantitative data from the global analysis (the one that you export from the software (see Starting material). Then, you will need to upload a experimental design file. This file is just a txt file that need to have the exact following column names:\n\nSample_ID\nSimplify_ID\ngroup\n\nSample_ID corresponds the the column name of your quantitative columns. Simplify_ID is a shorter name that you can create (avoid spaces or special characters and I recommend always to start with a letter and to use the _ as a separator). Some good examples would be CTRL_01 or KO_02. Somme wrong example would be 01-CTRL or group corresponds to your experimental design.\n\n\n3.1.1.2 Step3\nStep3 allows to transform your quantitative matrix loaded in Step1 and your experimental design file loaded in Step2 into an integrated R object called DAList (Byrum et al. 2026). Therefore, you need to click on the TRANSFORM button.\n\n\n3.1.1.3 Step4\nStep 4 allows you to generate of interactive and integrated QC report of your data in order to investigate the quality of the data that you have generated. Note that you will be able to generate this kind of QC report at each preprocessing step in order to check the impact of the preprocessing step on your data (e.g. filtering, removal of a potential outlier, normalisation…) but this is not mandatory to continue to the next steps. I always recommend you to click on the GENERATE button.\nImportant Note: You can also download your QC report by clicking on the dedicated button in order to export a interactive Quarto report. Be aware that this process can take time (more or less 30 seconds depending on the size of your dataset) so I advice to be patient and avoid clicking several time on the button.\n\n\n3.1.1.4 Step5\nWhen you are finished to investigate your QC report, you can click on the Go to the filter sample(s) step button.\n\n\n\n3.1.2 Filter sample(s)\n\n\n\nGlobal analysis - Filter sample(s)\n\n\n\n3.1.2.1 Step1\nAccording to the previous QC report generated in the DAList creation subtab, it is possible (or not) that you spot a sample having an unexpected behavior. Therefore you can choose the remove or not any outlier(s) that you want by clicking on No or Yes.\n\n\n3.1.2.2 Step2\n\nIf you click on Yes, you can choose the outlier by clicking on the Simplify_ID in the dropdown menu and click on the REMOVE button.\nIf you click on No, nothing else is to be done.\n\n\n\n3.1.2.3 Step3\nYou can still click on the GENERATE button to check the impact of removing any outliers but if you did not remove any outlier(s), the QC report will remain the same as the one from the DAList creation subtab.\n\n\n3.1.2.4 Step4\nWhen you are finished to investigate your QC report, you can click on the Go to the filter protein(s) step button.\n\n\n\n3.1.3 Filter protein(s)\n #### Step1\nAccording to the previous QC report generated in the DAList creation subtab, it is possible to filter proteins based on their number of valid values (VV) (i.e quantitative values extracted from your MS spectra) in at least one of your experimental group in order to not rely on proteins that have too many missing values.\nImportant Note: As protein that we called ON/OFF (present totally or in a few replicates in one experimental condition and completely absent in the other condition) can be interesting for the biology, PhosView only allowed to filter for a specific % of valid values (50, 70 or 100) in at least one of your experimental group.\nAfter choosing the threshold that you want, you can click on the KEEP button.\n\n3.1.3.1 Step2\nAs previously mentioned, you can click on the GENERATE button to check the impact of the filter that you have just applied at the protein-level.\n\n\n3.1.3.2 Step3\nWhen you are finished to investigate your QC report, you can click on the Go to the Normalisation step button.\n\n\n\n3.1.4 Normalization\n #### Step1\nDuring the Step 1, you have the opportunity to generate a QC normalisation report in order to choose the best way to normalize your data by clicking on the GENERATE button.\nIn a nutshell, it will generate QC plots after applying each normalisation method (log2, median, mean, vsn, quantile, cycloess, rlr gi) proposed by the proteoDA package in order to check specific statistical metrics (PCV, PMAD, PEV, COR) for each normalization.\nThis report is coming from the proteoDA R package so if you want to know more about it, I recommend you to visit https://github.com/ByrumLab/proteoDA and more specifically read the proteiNorm paper.\n\n3.1.4.1 Step2\nStep2 allows you to choose or not a specific normalization methods.\n\nIf you click on No, you will be force to click on no normalisation followed by log2 normalisation and click on the NORMALIZATION button\n\n\n\n3.1.4.2 Step3\n\nIf you click on Yes, you can choose the normalization methods of your choice followed by log2 transformation of your data by clicking on the NORMALIZATION button.\n\n\n\n3.1.4.3 Step4\nAs previously mentioned, you can click on the GENERATE button to check the impact of the normalization that you have just applied at the protein-level.\n\n\n3.1.4.4 Step5\nWhen you are finished to investigate your QC report, you can click on the Go to the imputation step button.\n\n\n\n3.1.5 Imputation\n\n\n\nGlobal analysis - Imputation\n\n\n\n3.1.5.1 Step1\nUsually, proteomics workflow implies imputation of missing values. We only propose one imputation method that corresponds to filling missing data points by creating a Gaussian distribution of random numbers with a standard deviation of 30% relative to the standard deviation of the measured values and 1.8 standard deviation downshift of the mean to simulate the distribution of low signal values.\nYou can perform this imputation by clicking on the IMPUTATION button.\n\n\n3.1.5.2 Step2\nAs previously mentioned, you can click on the GENERATE button to check the impact of the imputation that you have just applied at the protein-level.\n\n\n3.1.5.3 Step3\nWhen you are finished to investigate your QC report, you can click on the Go to the Statistics step button.\n\n\n\n3.1.6 Statistics\n\n\n\nGlobal analysis - Statistics\n\n\n\n3.1.6.1 Step1\nThis step allows you to set the number of statistical comparison that you want to investigate.\nChanging the number will impact the number of rows (comparison) in Step 2.\n\n\n3.1.6.2 Step2\nStep2 allow you to fill the contrast information by choosing the experimental groups.\n\n\n3.1.6.3 Step3\nStep3 allows you the set the log2FC threshold and the adjusted p-value threshold to control for False Discovery Rate (FDR). Usually in proteomics, we choose FDR 5 % (0.05)\n\n\n3.1.6.4 Step4\nWhen every parameters are set, we can click on the PERFORM STATS button\n\n\n3.1.6.5 Step5\nFinally, you can explore the volcano plot of your global analysis by selecting the statistical comparison of interest and also select a spcific gene to highligh in the volcano plot and investigate the associated profile plot on the right of the volcano plot.\n\n\n3.1.6.6 Step6\nWhen the global analysis is finished, it is time to perform the phospho analysis on the phospho enriched sample by clinking on the Go to the Phospho analysis button.\n\n\n\n\nByrum, Stephanie, Zuo-Fei Yuan, and Yingxue Fu. 2026. proteoDA: Streamlined Differential Abundance Analysis of Proteomic Data. https://github.com/ByrumLab/proteoDA.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Global Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "02_getting_started.html#sec-start_material",
+    "href": "02_getting_started.html#sec-start_material",
+    "title": "2  Getting started",
+    "section": "",
+    "text": "2.1.1 DIA-NN Academia (version &gt;=2.5)\nI work on the assumption that users know how to run a label free global analysis and a phospho-proteomics analysis on DIA-NN with the proper settings.\n\nreport.pg_matrix.tsv file exported from DIA-NN. This file corresponds to the quant table of your global experiment (non phopho-enriched samples).\nreport.phosphosites_90.tsv or report.phosphosites_99.tsv files exported from DIA-NN. This file corresponds to the quant table of your phospho experiment (phospho-enriched samples).\n\n\n\n2.1.2 Spectronaut (version &gt;=19)\nI work on the assumption that users know how to run a label free global analysis and a phospho-proteomics analysis on Spectronaut with the proper settings. This is pretty straightforward in Spectronaut by clicking on “Set up directDIA Analysis from Folder” and use the “BGS Factor Settings (default)” to run the global analysis and the “BGS Phospho PTM workflow” to run the phosphoproteomics analysis.\n\nreport file exported from Spectronaut using the PhosView_Global.rs schema (present in inst/extdata) that you can import in the Report tab in Spectronaut. This file corresponds to the quant table of your global experiment (non phospho-enriched samples).\nreport file exported from Spectronaut using the PhosView_Phospho.rs schema (present in inst/extdata) that you can import in the Report tab in Spectronaut. This file corresponds to the quant table of your phospho experiment (phospho-enriched samples).\n\n\n\n2.1.3 Run PhosView\nlibrary(PhosView)\nrun_app()",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "04_phospho_analysis.html",
+    "href": "04_phospho_analysis.html",
+    "title": "4  Phospho Analysis",
+    "section": "",
+    "text": "4.1 Phospho analysis\nAfter clicking on the Go to the Phospho analysis button, you will land in the “Phospho analysis” main tab that contain 7 subtabs (see below).\nEach subtab correspond to different preprocessing steps that you will need to perform sequentially.\nIntead of the first preprocessing step called 1st class phosphosite, all the remaining preprocessing step uses the proteoDA R package (Byrum et al. 2026) and are exactly identical to the one of the global analysis. Therefore, it will not be detailed again, please refer to the Global Analysis section. The only difference is that in the Global Analysis the features were proteins whereas in the Phospho Analysis, the features are phosphosites.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Phospho Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "04_phospho_analysis.html#phospho-analysis",
+    "href": "04_phospho_analysis.html#phospho-analysis",
+    "title": "4  Phospho Analysis",
+    "section": "",
+    "text": "Phospho analysis containing 7 processing steps\n\n\n\n\n\n4.1.1 1st class phosphosite\n\n\n\nPhospho analysis - 1st class phosphosite\n\n\n\n4.1.1.1 Step1 & Step2\nThis step corresponds to data import/loading. You will need to import your quantitative data from the phospho analysis (the one that you export from the software (see Starting material). Then, you will need to upload a experimental design file. This file is just a txt file that need to have the exact following column names:\n\nSample_ID\nSimplify_ID\ngroup\n\nSample_ID corresponds the the column name of your quantitative columns. Simplify_ID is a shorter name that you can create (avoid spaces or special characters and I recommend always to start with a letter and to use the _ as a separator). Some good examples would be CTRL_01 or KO_02. Somme wrong example would be 01-CTRL or group corresponds to your experimental design.\n\n\n4.1.1.2 Step3\nStep3 allows to generate a QC report that will allows you to choose the best filter in order to get 1st class phosphosite before transform it to a DAList object.\nImportant Note: Indeed, we used to run the phospho analysis on Spectronaut with localisation probability threshold equal to 0 in the setting instead of 0.75 and we prefer to filter for the localisation probability manually afterwards in the PhosView app.\nTherefore, you need to click on the GENERATE button in order to build this QC report.\n\n\n4.1.1.3 Step4\nAccording to the previous QC report generated in Step3, it is possible to filter phosphosite in order to only keep phosphosites that have a localisation probability &gt;75% in at lease 50% or 70% or 100% of replicated in at least on e of your experimental group.\nImportant Note: Indeed, in your quantitative matrix you have as many quantitative columns (one for each sample) as localisation probability columns (one for each sample) so you can applied the same kind of filtering that you usually apply at the protein level (valid values) but here you apply this filter for the presence of a localisation probability that need to be higher than 75%.\nAfter choosing the threshold that you want, you can click on the KEEP button.\n\n\n4.1.1.4 Step5\nWhen you are finished with this preprocessing step, you can click on the Go to the DAList creation step button.\n\n\n\n4.1.2 All remaining preprocessing step\nAll the remaining preprocessing step from DAlist creation to Statistics are based on the same function and principle than for the Global Analysis and they rely also on the use of the proteoDA R package (Byrum et al. 2026).\nTherefore, I suggest you to refer to the Global Analysis section.\nAt the end of the Statistics tab, we will need to click on the Go to the INTEGRATION analysis button in order to integration and explore both analysis side by side.\n\n\n\n\nByrum, Stephanie, Zuo-Fei Yuan, and Yingxue Fu. 2026. proteoDA: Streamlined Differential Abundance Analysis of Proteomic Data. https://github.com/ByrumLab/proteoDA.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Phospho Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "03_global_analysis.html#sec-glob_analysis",
+    "href": "03_global_analysis.html#sec-glob_analysis",
+    "title": "3  Global Analysis",
+    "section": "",
+    "text": "Global analysis containing 6 processing steps\n\n\n\n\n3.1.1 DAlist creation\n\n\n\nGlobal analysis - DAList creation\n\n\n\n3.1.1.1 Step1 & Step2\nThis step corresponds to data import/loading. You will need to import your quantitative data from the global analysis (the one that you export from the software (see Starting material). Then, you will need to upload a experimental design file. This file is just a txt file that need to have the exact following column names:\n\nSample_ID\nSimplify_ID\ngroup\n\nSample_ID corresponds the the column name of your quantitative columns. Simplify_ID is a shorter name that you can create (avoid spaces or special characters and I recommend always to start with a letter and to use the _ as a separator). Some good examples would be CTRL_01 or KO_02. Somme wrong example would be 01-CTRL or group corresponds to your experimental design.\n\n\n3.1.1.2 Step3\nStep3 allows to transform your quantitative matrix loaded in Step1 and your experimental design file loaded in Step2 into an integrated R object called DAList (Byrum et al. 2026). Therefore, you need to click on the TRANSFORM button.\n\n\n3.1.1.3 Step4\nStep 4 allows you to generate of interactive and integrated QC report of your data in order to investigate the quality of the data that you have generated. Note that you will be able to generate this kind of QC report at each preprocessing step in order to check the impact of the preprocessing step on your data (e.g. filtering, removal of a potential outlier, normalisation…) but this is not mandatory to continue to the next steps. I always recommend you to click on the GENERATE button.\nImportant Note: You can also download your QC report by clicking on the dedicated button in order to export a interactive Quarto report. Be aware that this process can take time (more or less 30 seconds depending on the size of your dataset) so I advice to be patient and avoid clicking several time on the button.\n\n\n3.1.1.4 Step5\nWhen you are finished to investigate your QC report, you can click on the Go to the filter sample(s) step button.\n\n\n\n3.1.2 Filter sample(s)\n\n\n\nGlobal analysis - Filter sample(s)\n\n\n\n3.1.2.1 Step1\nAccording to the previous QC report generated in the DAList creation subtab, it is possible (or not) that you spot a sample having an unexpected behavior. Therefore you can choose the remove or not any outlier(s) that you want by clicking on No or Yes.\n\n\n3.1.2.2 Step2\n\nIf you click on Yes, you can choose the outlier by clicking on the Simplify_ID in the dropdown menu and click on the REMOVE button.\nIf you click on No, nothing else is to be done.\n\n\n\n3.1.2.3 Step3\nYou can still click on the GENERATE button to check the impact of removing any outliers but if you did not remove any outlier(s), the QC report will remain the same as the one from the DAList creation subtab.\n\n\n3.1.2.4 Step4\nWhen you are finished to investigate your QC report, you can click on the Go to the filter protein(s) step button.\n\n\n\n3.1.3 Filter protein(s)\n\n\n\nGlobal analysis - Filter protein(s)\n\n\n\n3.1.3.1 Step1\nAccording to the previous QC report generated in the DAList creation subtab, it is possible to filter proteins based on their number of valid values (VV) (i.e quantitative values extracted from your MS spectra) in at least one of your experimental group in order to not rely on proteins that have too many missing values.\nImportant Note: As protein that we called ON/OFF (present totally or in a few replicates in one experimental condition and completely absent in the other condition) can be interesting for the biology, PhosView only allowed to filter for a specific % of valid values (50, 70 or 100) in at least one of your experimental group.\nAfter choosing the threshold that you want, you can click on the KEEP button.\n\n\n3.1.3.2 Step2\nAs previously mentioned, you can click on the GENERATE button to check the impact of the filter that you have just applied at the protein-level.\n\n\n3.1.3.3 Step3\nWhen you are finished to investigate your QC report, you can click on the Go to the Normalisation step button.\n\n\n\n3.1.4 Normalization\n\n\n\nGlobal analysis - Normalisation\n\n\n\n3.1.4.1 Step1\nDuring the Step 1, you have the opportunity to generate a QC normalisation report in order to choose the best way to normalize your data by clicking on the GENERATE button.\nIn a nutshell, it will generate QC plots after applying each normalisation method (log2, median, mean, vsn, quantile, cycloess, rlr gi) proposed by the proteoDA package in order to check specific statistical metrics (PCV, PMAD, PEV, COR) for each normalization.\nThis report is coming from the proteoDA R package so if you want to know more about it, I recommend you to visit https://github.com/ByrumLab/proteoDA and more specifically read the proteiNorm paper (Graw et al. 2020).\n\n\n3.1.4.2 Step2\nStep2 allows you to choose or not a specific normalization methods.\n\nIf you click on No, you will be force to click on no normalisation followed by log2 normalisation and click on the NORMALIZATION button\n\n\n\n3.1.4.3 Step3\n\nIf you click on Yes, you can choose the normalization methods of your choice followed by log2 transformation of your data by clicking on the NORMALIZATION button.\n\n\n\n3.1.4.4 Step4\nAs previously mentioned, you can click on the GENERATE button to check the impact of the normalization that you have just applied at the protein-level.\n\n\n3.1.4.5 Step5\nWhen you are finished to investigate your QC report, you can click on the Go to the imputation step button.\n\n\n\n3.1.5 Imputation\n\n\n\nGlobal analysis - Imputation\n\n\n\n3.1.5.1 Step1\nUsually, proteomics workflow implies imputation of missing values. We only propose one imputation method that corresponds to filling missing data points by creating a Gaussian distribution of random numbers with a standard deviation of 30% relative to the standard deviation of the measured values and 1.8 standard deviation downshift of the mean to simulate the distribution of low signal values.\nYou can perform this imputation by clicking on the IMPUTATION button.\n\n\n3.1.5.2 Step2\nAs previously mentioned, you can click on the GENERATE button to check the impact of the imputation that you have just applied at the protein-level.\n\n\n3.1.5.3 Step3\nWhen you are finished to investigate your QC report, you can click on the Go to the Statistics step button.\n\n\n\n3.1.6 Statistics\n\n\n\nGlobal analysis - Statistics\n\n\n\n3.1.6.1 Step1\nThis step allows you to set the number of statistical comparison that you want to investigate.\nChanging the number will impact the number of rows (comparison) in Step 2.\n\n\n3.1.6.2 Step2\nStep2 allow you to fill the contrast information by choosing the experimental groups.\n\n\n3.1.6.3 Step3\nStep3 allows you the set the log2FC threshold and the adjusted p-value threshold to control for False Discovery Rate (FDR). Usually in proteomics, we choose FDR 5 % (0.05)\n\n\n3.1.6.4 Step4\nWhen every parameters are set, we can click on the PERFORM STATS button\n\n\n3.1.6.5 Step5\nFinally, you can explore the volcano plot of your global analysis by selecting the statistical comparison of interest and also select a spcific gene to highligh in the volcano plot and investigate the associated profile plot on the right of the volcano plot.\n\n\n3.1.6.6 Step6\nWhen the global analysis is finished, it is time to perform the phospho analysis on the phospho enriched sample by clinking on the Go to the Phospho analysis button.\n\n\n\n\nByrum, Stephanie, Zuo-Fei Yuan, and Yingxue Fu. 2026. proteoDA: Streamlined Differential Abundance Analysis of Proteomic Data. https://github.com/ByrumLab/proteoDA.\n\n\nGraw, Stefan, Jillian Tang, Maroof K Zafar, et al. 2020. “proteiNorm – a User-Friendly Tool for Normalization and Analysis of TMT and Label-Free Protein Quantification.” ACS Omega 5 (40): 25625–33. https://doi.org/10.1021/acsomega.0c02564.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Global Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "05_integration_global_phospho.html",
+    "href": "05_integration_global_phospho.html",
+    "title": "5  Global & Phospho Integration",
+    "section": "",
+    "text": "5.1 Global & Phospho Integration\nThe Global & Phospho Integration contain 4 main modules:\nYou can notice also that you now have a sidebar of the left. This sidebar allows you to do several thing:\nImportant Note: When you land on this DualView module, I recommend that you choose the taxonomy of your study (for the moment only 2 available: human or mouse) and perform the Over Representation Analysis by clicking on the RUN ORA button. A progress bar will appear at the bottom right of your screen. I recommend to wait that the analysis is finished before running the next Kinase-Substrate analysis by clicking on the RUN KinSub button. In the same way, wait that the analysis is performed (cf progress bar) to run the final Pathview Analysis by clicking on the RUN PathView button.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Global & Phospho Integration</span>"
+    ]
+  },
+  {
+    "objectID": "05_integration_global_phospho.html#global-phospho-integration",
+    "href": "05_integration_global_phospho.html#global-phospho-integration",
+    "title": "5  Global & Phospho Integration",
+    "section": "",
+    "text": "DualView based on the use of the tidyverse\nOver Representation Analysis based on the use of the clusterProfiler R package (Xu et al. 2024).\nKinase-Substrate Analysis based on the use of the PhosR R package (Kim et al. 2021).\nKEGG Pathway Viewer based on the use of the Pathview R package (Luo et al. 2013).\n\n\n\nSelect the statistical comparison of interest that will modify and update the rendering of all the 4 main modules cited above.\nSelect a specific protein by using its associated gene name.\nPerform the Over Representation analysis after (or even during) you investigate the DualView results (more on that in the next part)\nPerform the Kinase Substrate Analysis\nPerform the Pathview analysis\n\n\n\n\n\nGlobal & Phospho Integration containing 4 modules\n\n\n\n5.1.1 Dual View\nThe DualView module allows you to investigate the statistical results using the statistical table with volcano plot side by side (left: global, right: phospho). It is also possible to look for a specific gene and investigate the corresponding profile plot with associated phosphosites (if present). At the bottom, a dual fold change plot is present summarizing the log2FC of the protein that have corresponding phosphosite. The color code is here to know if a protein and/or corresponding phosphosite is significantly (or not) up/down - regulated in the statistical analysis.\nOne example of layout below:\n\n\n\nDual View: Statistical table and volcano plots (left: global, right: phospho)\n\n\n\n\n\nDual View: Profile plot (left: global, right: phospho) and dual FoldChange plot\n\n\n\n\n5.1.2 Over Representation Analysis\nOver Representation Analysis will be perform on the significant up- and down- regulated protein (for the global analysis) and phosphosite (for the phospho analysis) of each statistical comparison using the GO (Gene Ontology), Reactome and KEGG annotations embedded with the clusterProfiler R package.\nTherefore, after clicking on the RUN ORA button and wait that the analysis is finished to run, it will generate 6 subtab inside the Over Representation Analysis tab:\n\nGO_ORA_Global\nReatome_ORA_Global\nKEGG_ORA_Global\nGO_ORA_Phospho\nReatome_ORA_Phospho\nKEGG_ORA_Phospho\n\nEach of those subtabs will contain the enrichment results for the up- and down regulated features (protein or phosphosite) and associated plots (barplot, cnetplot, emapplot) that is possible to make usually with clusterProfiler/enrichplot R packages.\nOne example of layout below:\n\n\n\nORA: Enrichment table results\n\n\n\n\n\nORA: Barplot, cnetplot and emapplot\n\n\n\n\n5.1.3 Kinase-Substrate Analysis\nThe Kinase-Substrate Analysis will be perform on the up- and down- regulated phosphosites for each statistical comparison and will generate an heatmap of substrate scores for kinases that pass filtering based on both motifs and dynamic profiles (https://pyanglab.github.io/PhosR/index.html). The highest the score is, the highest the reliability of a phosphosite is a substrate of a specific kinase is.\nOne example of layout below:\n\n\n\nKinase-Substrate Heatmap\n\n\n\n\n5.1.4 KEGG Pathway Viewer\nThe KEGG pathway viewer module is performing an Over Representation Analysis using the kinase found in the kinase-substrate score matrix (PhosR) and the gene associated to the up- and down- regulated phosphosites from the statistical analysis.\nThen the list of KEGG pathway enriched is retrieve and rendered using PathView R package and the kinase found in the kinase-substrate score matrix and the gene associated to the up- and down- regulated phosphosites from the statistical analysis are colored using their respective log2FC values.\nOne example of layout below:\n At the end of the Global & Phospho Integration tab, we will need to click on the Go to EXPORTS button in order to save some results table and more importantly save your session if you would like to come back to your results later.\nImportant Note: In order to reload your session, you will need to rerun PhosView (run_app() function). You will come back to the landing page introduce in the Landing page section. This time, do not click in New Analysis but instead click on the Browser, look for your session file and click on the Load Session button. Be aware that doing so, you will only have access to the content of Global and Phospho Integration main tab.\n\n\n\n\nKim, Hani Jieun, Taiyun Kim, Nolan J Hoffman, et al. 2021. “PhosR Enables Processing and Functional Analysis of Phosphoproteomic Data.” Cell Reports 34 (8). https://doi.org/10.1016/j.celrep.2021.108771.\n\n\nLuo, Weijun, Brouwer, and Cory. 2013. “Pathview: An r/Bioconductor Package for Pathway-Based Data Integration and Visualization.” Bioinformatics 29 (14): 1830–31. https://doi.org/10.1093/bioinformatics/btt285.\n\n\nXu, Shuangbin, Erqiang Hu, Yantong Cai, et al. 2024. “Using clusterProfiler to Characterize Multiomics Data.” Nature Protocols 19 (11): 3292–320. https://doi.org/10.1038/s41596-024-01020-z.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Global & Phospho Integration</span>"
+    ]
+  },
+  {
+    "objectID": "06_exports.html",
+    "href": "06_exports.html",
+    "title": "6  Export your results",
+    "section": "",
+    "text": "6.1 Export your results\nIf you arrive at the step, it means that you have successfully finish to analyze your data (or at least the first exploration).\nOn the tab, you will have the opportunity to download different kind of files:\nImportant Note: The .xls file could be used as a supplementary file for article submission. The .rds file are R specific object that you could use to investigate in more depth your results or even create more publication ready figures.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Export your results</span>"
+    ]
+  },
+  {
+    "objectID": "06_exports.html#export-your-results",
+    "href": "06_exports.html#export-your-results",
+    "title": "6  Export your results",
+    "section": "",
+    "text": "Export your results module\n\n\n\n\nThe quantitative matrix and statistics results from your Global Analysis in .xls format and .rds format\nThe quantitative matrix and statistics results from your Phospho Analysis in .xls format and .rds format\nAll the functional analyses export of the ORA, Kinase-substrate and KEGG pathview analysis in .xls format and .rds format\nFinally, you can also export your session in rds. format that can be reload in the landing page",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Export your results</span>"
+    ]
+  },
+  {
+    "objectID": "02_getting_started.html#sec-landing_page",
+    "href": "02_getting_started.html#sec-landing_page",
+    "title": "2  Getting started",
+    "section": "2.2 Landing page",
+    "text": "2.2 Landing page\nAfter executing the command run_app(), the app will open and a landing page will appear on your screen (see below).\n\n\n\nLanding page\n\n\nYou will have two possibilities:\n\nClick on “New analysis” if you run to run an analysis from scratch (next sections will detail this part).\nClick on “Load Session” if you want to reload your previous session by using a specific R object (I will come back later into that part in the {#sec-reload-session}).\n\nNow let’s start with a New Analysis by clicking on the “New Analysis” button !",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  }
+]

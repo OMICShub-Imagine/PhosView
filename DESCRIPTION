@@ -1,0 +1,75 @@
+Package: PhosView
+Type: Package
+Title: PhosView: An Integrated and Interactive Tool for Quantitative Proteomics and Phosphoproteomics Analysis
+Version: 0.0.0.9000
+Date: 2026-08-12
+Authors@R: 
+    person(
+    "Kevin", "Roger", 
+    email = "kevin.roger@inserm.fr", 
+    role = c("aut", "cre"),
+    comment = c(ORCID = "0000-0003-1353-3415", 
+                affiliation = "Proteomics platform Necker, Université Paris Cité - Structure Fédérative de Recherche Necker, INSERM US24/CNRS UAR3633, Paris, France
+                               Bioinformatics Core Platform, Imagine Institute, INSERM UMR1163 and Structure Fédérative de Recherche Necker, INSERM US24/CNRS UAR3633, Université Paris Cité, Paris, France")
+                               )
+Description: The goal of the PhosView app is to analyze data from global proteomics experiment associated
+             with phosphoproteomics and process with Spectronaut softwayre. 
+             It also allows to perform integrated statistical and downstream bioinformatics analysis.
+License: GPL (>= 3)
+URL: https://github.com/OMICShub-Imagine/PhosView
+Depends:
+    R (>= 4.1.0)
+Imports: 
+    config,
+    pathview,
+    heatmaply,
+    shinyjs,
+    golem,
+    plotly,
+    shiny,
+    DT,
+    dplyr,
+    tidyr,
+    tibble,
+    ggplot2,
+    PCAtools,
+    ggcorrplot,
+    proteoDA,
+    RColorBrewer,
+    AnnotationDbi,
+    PhosR,
+    ReactomePA,
+    assertthat,
+    cli,
+    clusterProfiler,
+    enrichplot,
+    forcats,
+    htmlwidgets,
+    openxlsx,
+    org.Hs.eg.db,
+    org.Mm.eg.db,
+    purrr,
+    scales,
+    skimr,
+    stringr,
+    viridis,
+    withr,
+    MASS,
+    ggrastr,
+    limma,
+    preprocessCore,
+    rlang,
+    vsn
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.3
+Suggests: 
+    knitr,
+    rmarkdown,
+    spelling,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Language: en-US
+Remotes: 
+    github::ByrumLab/proteoDA@1.0.0
+VignetteBuilder: knitr

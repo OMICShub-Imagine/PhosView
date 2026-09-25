@@ -1,0 +1,13 @@
+Sample_ID	Simplify_ID	group
+[1] 230801_RD_Phospho_nE_DIA_n2_HeLa 1 Phospho_9999.d.PTM.Quantity	CTRL_1	CTRL
+[2] 230801_RD_Phospho_nE_DIA_n2_HeLa 2 Phospho_10000.d.PTM.Quantity	CTRL_2	CTRL
+[3] 230801_RD_Phospho_nE_DIA_n2_HeLa 3 Phospho_10001.d.PTM.Quantity	CTRL_3	CTRL
+[4] 230801_RD_Phospho_nE_DIA_n2_HeLa 4 Phospho_10002.d.PTM.Quantity	CTRL_4	CTRL
+[5] 230801_RD_Phospho_nE_DIA_n2_HeLa 5 Phospho_10003.d.PTM.Quantity	CTRL_5	CTRL
+[6] 230801_RD_Phospho_nE_DIA_n2_HeLa 6 Phospho_10004.d.PTM.Quantity	CTRL_6	CTRL
+[7] 230801_RD_Phospho_nE_DIA_n2_EGF 1 Phospho_10006.d.PTM.Quantity	EGF_1	EGF
+[8] 230801_RD_Phospho_nE_DIA_n2_EGF 2 Phospho_10007.d.PTM.Quantity	EGF_2	EGF
+[9] 230801_RD_Phospho_nE_DIA_n2_EGF 3 Phospho_10008.d.PTM.Quantity	EGF_3	EGF
+[10] 230801_RD_Phospho_nE_DIA_n2_EGF 4 Phospho_10009.d.PTM.Quantity	EGF_4	EGF
+[11] 230801_RD_Phospho_nE_DIA_n2_EGF 5 Phospho_10010.d.PTM.Quantity	EGF_5	EGF
+[12] 230801_RD_Phospho_nE_DIA_n2_EGF 6 Phospho_10011.d.PTM.Quantity	EGF_6	EGF

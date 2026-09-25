@@ -1,0 +1,13 @@
+Sample_ID	Simplify_ID	group
+[1] 230801_RD_Phospho_nE_DIA_n2_HeLa 1 CL_10013.d.PG.Quantity	CTRL_1	CTRL
+[2] 230801_RD_Phospho_nE_DIA_n2_HeLa 2 CL_10014.d.PG.Quantity	CTRL_2	CTRL
+[3] 230801_RD_Phospho_nE_DIA_n2_HeLa 3 CL_10015.d.PG.Quantity	CTRL_3	CTRL
+[4] 230801_RD_Phospho_nE_DIA_n2_HeLa 4 CL_10016.d.PG.Quantity	CTRL_4	CTRL
+[5] 230801_RD_Phospho_nE_DIA_n2_HeLa 5 CL_10017.d.PG.Quantity	CTRL_5	CTRL
+[6] 230801_RD_Phospho_nE_DIA_n2_HeLa 6 CL_10018.d.PG.Quantity	CTRL_6	CTRL
+[7] 230801_RD_Phospho_nE_DIA_n2_EGF 1 CL_10020.d.PG.Quantity	EGF_1	EGF
+[8] 230801_RD_Phospho_nE_DIA_n2_EGF 2 CL_10021.d.PG.Quantity	EGF_2	EGF
+[9] 230801_RD_Phospho_nE_DIA_n2_EGF 3 CL_10022.d.PG.Quantity	EGF_3	EGF
+[10] 230801_RD_Phospho_nE_DIA_n2_EGF 4 CL_10023.d.PG.Quantity	EGF_4	EGF
+[11] 230801_RD_Phospho_nE_DIA_n2_EGF 5 CL_10024.d.PG.Quantity	EGF_5	EGF
+[12] 230801_RD_Phospho_nE_DIA_n2_EGF 6 CL_10025.d.PG.Quantity	EGF_6	EGF

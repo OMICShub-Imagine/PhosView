@@ -1,0 +1,148 @@
+---
+title: "QC report"
+date: today
+date-format: "DD-MM-YYYY"
+title-block-banner: "#3498db"
+params:
+  input_file: null
+format: 
+  html:
+    embed-resources: true
+    smooth-scroll: true
+    theme: cosmo
+    fontcolor: black
+    toc: true
+    toc-location: left
+    toc-title: Summary
+    toc-depth: 3
+    page-layout: full
+editor: visual
+lightbox: true
+---
+
+```{r}
+#| label: qc_plots
+#| message: false
+#| warning: false
+#| include: false
+
+library(plotly)
+library(tidyverse)
+
+input <- readRDS(params$input_file)
+```
+
+# Sample-wise quality control plot
+
+## Sample intensity distribution per sample
+
+```{r}
+#| label: s_distrib_int
+#| echo: false
+#| message: false
+#| warning: false
+
+plotly::ggplotly(input$plots$s_distrib_int, tooltip = "text")
+```
+
+```{r}
+#| label: s_bp_int
+#| echo: false
+#| message: false
+#| warning: false
+
+plotly::ggplotly(input$plots$s_bp_int, tooltip = "text")
+```
+
+## Sample intensity distribution per condition
+
+```{r}
+#| label: g_distrib_int
+#| echo: false
+#| message: false
+#| warning: false
+
+plotly::ggplotly(input$plots$g_distrib_int, tooltip = "text")
+```
+
+```{r}
+#| label: g_bp_int
+#| echo: false
+#| message: false
+#| warning: false
+
+
+plotly::ggplotly(input$plots$g_bp_int, tooltip = "text")
+```
+
+## Number of protein identified per sample
+
+```{r}
+#| label: s_id
+#| echo: false
+#| message: false
+#| warning: false
+
+
+plotly::ggplotly(input$plots$s_id, tooltip = "text")
+```
+
+```{r}
+#| label: g_id
+#| echo: false
+#| message: false
+#| warning: false
+
+
+plotly::ggplotly(input$plots$g_id, tooltip = "text")
+```
+
+## Sample correlation
+
+```{r}
+#| label: corr_plot
+#| echo: false
+#| message: false
+#| warning: false
+
+plotly::ggplotly(input$plots$corr_plot, tooltip = "text")
+
+```
+
+## Principal Component Analysis
+
+```{r}
+#| label: pca_plot
+#| echo: false
+#| message: false
+#| warning: false
+
+input$plots$pca_plot
+```
+
+## Heatmap of the top100 (for each PC1&PC2) most variable proteins from PCA
+
+```{r}
+#| label: heatmap_pcaload
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-height: 30
+#| fig-width: 15
+
+plotly::ggplotly(input$plots$heatmap_pcaload, tooltip = "text")
+
+```
+
+# Protein-wise quality control plot
+
+## Ranking plot
+
+```{r}
+#| label: rank_plot
+#| echo: false
+#| message: false
+#| warning: false
+
+plotly::ggplotly(input$plots$rank_plot, tooltip = "text")
+```

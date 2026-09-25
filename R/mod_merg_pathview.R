@@ -1,0 +1,303 @@
+#' merg_pathview UI Function
+#'
+#' @description A shiny Module.
+#'
+#' @param id,input,output,session Internal parameters for {shiny}.
+#'
+#' @noRd
+#'
+#' @importFrom utils data head read.table str
+#'
+#' @importFrom shiny NS tagList
+mod_merg_pathview_ui <- function(id) {
+  ns <- NS(id)
+  tagList(
+    fluidRow(
+      h4("KEGG ORA on Dysregulated Kinase/Substrates"),
+      column(12, DT::dataTableOutput(ns("Kinase_Substrate_KEGG_Table"))),
+      hr(),
+      h4("Table of phosphosite (substrate) and Kinase retained"),
+      column(12, DT::dataTableOutput(ns("Kinase_Substrate_Table"))),
+      hr(),
+      h4("Pathviewer of selected pathway"),
+      column(12, imageOutput(ns("Kinase_Substrate_KEGG_Pathway")))
+
+      )
+    )
+}
+
+#' merg_pathview Server Functions
+#'
+#' @noRd
+mod_merg_pathview_server <- function(id,
+                                     kinsub_ora_selected_results,
+                                     kinsub_selected_results,
+                                     comparison,
+                                     kegg_selector,
+                                     taxo_kegg,
+                                     AnnotDb,
+                                     pathview_dir
+                                     ){
+  moduleServer(id, function(input, output, session){
+    ns <- session$ns
+
+    # ---- KEGG Table ----
+    output$Kinase_Substrate_KEGG_Table <- DT::renderDataTable({
+      res <- kinsub_ora_selected_results()
+
+      if (is.null(res)) {
+        validate(need(FALSE, "No ORA results"))
+      }
+
+      if (is.null(res$KEGG)) {
+        validate(need(FALSE, "No KEGG enrichment results"))
+      }
+
+      if (is.null(res$KEGG@result) || nrow(res$KEGG@result) == 0) {
+        validate(need(FALSE, "Empty KEGG result table"))
+      }
+
+      DT::datatable(as.data.frame(res$KEGG@result),
+                    class = "cell-border compact hover order-column",
+                    rownames = FALSE,
+                    editable = "row",
+                    extensions = c("Scroller", "FixedColumns", "Buttons"),
+                    selection = "none",
+                    filter = list(position = 'top', clear = FALSE),
+                    callback = htmlwidgets::JS(
+                      "table.columns.adjust().draw();"
+                    ),
+                    options = list(
+                      columnDefs = list(
+                        list(
+                          targets = c("Description"),
+                          render = htmlwidgets::JS(
+                            "function(data, type, row, meta) {",
+                            "  if (type === 'display' && data !== null && data !== undefined && data !== '') {",
+                            "    return data.length > 25 ? '<span title=\"' + data + '\">' + data.substr(0, 25) + '...</span>' : data;",
+                            "  } else {",
+                            "    return '';",
+                            "  }",
+                            "}"
+                          )
+                        )),
+                      autoWidth = TRUE,
+                      dom = "frtipB",
+                      scrollY = 200, scrollX = 400, scroller = TRUE,
+                      fixedColumns = list(leftColumns = 4),
+                      select = list(style = 'os', items = 'row'),
+                      buttons = c('copy', 'csv', 'excel', 'pdf', 'print',
+                                  'colvis','selectAll', 'selectNone',
+                                  'selectRows', 'selectColumns', 'selectCells')))
+    })
+
+    # ---- Kinase/Substrate retained for each comparison (Table) ----
+    output$Kinase_Substrate_Table <- DT::renderDataTable({
+      res <- kinsub_selected_results()
+
+      if (is.null(res)) {
+        validate(need(FALSE, "No ORA results"))
+      }
+
+
+      DT::datatable(as.data.frame(res),
+                    class = "cell-border compact hover order-column",
+                    rownames = FALSE,
+                    editable = "row",
+                    extensions = c("Scroller", "FixedColumns", "Buttons"),
+                    selection = "none",
+                    filter = list(position = 'top', clear = FALSE),
+                    callback = htmlwidgets::JS(
+                      "table.columns.adjust().draw();"
+                    ),
+                    options = list(
+                      columnDefs = list(
+                        list(
+                          targets = c("gene"),
+                          render = htmlwidgets::JS(
+                            "function(data, type, row, meta) {",
+                            "  if (type === 'display' && data !== null && data !== undefined && data !== '') {",
+                            "    return data.length > 25 ? '<span title=\"' + data + '\">' + data.substr(0, 25) + '...</span>' : data;",
+                            "  } else {",
+                            "    return '';",
+                            "  }",
+                            "}"
+                          )
+                        )),
+                      autoWidth = FALSE,
+                      dom = "frtipB",
+                      scrollY = 200, scrollX = 400, scroller = TRUE,
+                      select = list(style = 'os', items = 'row'),
+                      buttons = c('copy', 'csv', 'excel', 'pdf', 'print',
+                                  'colvis','selectAll', 'selectNone',
+                                  'selectRows', 'selectColumns', 'selectCells'))
+                    )
+    })
+
+
+    #==============================================================
+    # Pathview rendering from KEGG selector
+    #==============================================================
+
+    # ---- Build geneList for Pathview ----
+    geneList_pathview <- reactive({
+
+      cat("\nENTERING geneList_pathview()\n")
+
+      cat("Checking kinsub_selected_results...\n")
+      print(is.null(kinsub_selected_results()))
+
+      cat("Checking AnnotDb...\n")
+      print(is.null(AnnotDb()))
+
+      req(kinsub_selected_results())
+      req(AnnotDb())
+
+      cat("Passed req()\n")
+
+      req(kinsub_selected_results(), AnnotDb())
+
+      cat("\nMODULE INPUT CHECK\n")
+
+      print(is.null(kinsub_selected_results()))
+
+      if (!is.null(kinsub_selected_results()))
+        print(names(kinsub_selected_results()))
+      message("geneList_pathview() entered")
+
+      df <- kinsub_selected_results()
+      cat("Rows in kinsub_selected_results():", nrow(df), "\n")
+      cat("Unique gene (raw):", length(unique(df$gene)), "\n")
+      cat("Structure:", str(df), "\n")
+
+      if (is.null(df) || nrow(df) == 0 || all(is.na(df$gene))) {
+        message("Empty kinsub_selected_results() → skipping Pathview")
+        return(numeric(0))
+      }
+
+      genes <- unique(df$gene)
+      genes <- unique(sapply(strsplit(genes, ";"), `[`, 1))
+      cat("Unique gene symbols after split:", length(genes), "\n")
+      cat("Example genes:", paste(head(genes, 10), collapse = ", "), "\n")
+
+      if (length(genes) == 0) {
+        message("No valid genes → skipping Pathview")
+        return(numeric(0))
+      }
+
+      entrez <- AnnotationDbi::mapIds(
+        AnnotDb(),
+        keys      = genes,
+        column    = "ENTREZID",
+        keytype   = "SYMBOL",
+        multiVals = "first"
+      )
+
+      cat("Mapped ENTREZ IDs:", sum(!is.na(entrez)), "/", length(entrez), "\n")
+      cat("Example ENTREZ mapping:\n")
+      print(head(entrez, 10))
+
+      df <- df %>%
+        dplyr::mutate(gene = strsplit(gene, ";")) %>%
+        tidyr::unnest(gene) %>%
+        dplyr::filter(gene %in% names(entrez)) %>%
+        dplyr::distinct(gene, .keep_all = TRUE)
+
+      cat("Rows after gene filtering:", nrow(df), "\n")
+      cat("Structrure df:", str(df), "\n")
+
+      # ---- logFC diagnostics ----
+      cat("Non-NA logFC values:", sum(!is.na(df$logFC)), "/", nrow(df), "\n")
+      cat("logFC summary:\n")
+      print(summary(df$logFC))
+
+
+      # ---- Build geneList ----
+      mapped <- entrez[df$gene]
+
+      geneList <- df$logFC
+      names(geneList) <- mapped
+
+      geneList <- geneList[!is.na(names(geneList))]
+      geneList <- geneList[!is.na(geneList)]
+      geneList[is.na(geneList)] <- 0
+
+      cat("Final geneList length:", length(geneList), "\n")
+      cat("Example geneList entries:\n")
+      print(geneList)
+
+      message("geneList built")
+      return(geneList)
+
+    })
+
+    # ---- Generate Pathview PNG when KEGG changes ----
+    pathview_png <- reactive({
+
+      message(">>> pathview_png triggered")
+
+      message("STEP 1")
+      geneList <- geneList_pathview()
+
+      message("STEP 2")
+
+      validate(
+        need(!is.null(geneList), "No genes available"),
+        need(length(geneList) > 0, "No enriched phosphosites")
+      )
+
+      message("STEP 3")
+
+      pid <- kegg_selector()
+
+      print(pid)
+
+      message("STEP 4")
+
+      validate(
+        need(!is.null(pid), "No KEGG pathway selected"),
+        need(length(pid) == 1, "Invalid KEGG selection"),
+        need(!is.na(pid), "KEGG pathway is NA"),
+        need(nchar(trimws(pid)) > 0, "Empty KEGG pathway ID")
+      )
+
+      message("STEP 5")
+
+      generate_pathview_png(
+        geneList   = geneList,
+        pathway_id = pid,
+        taxo_kegg  = taxo_kegg(),
+        out_dir    = pathview_dir(),
+        suffix     = paste0(comparison(), "_pathview")
+      )
+
+    })
+
+
+    # ---- Render Pathview image ----
+    output$Kinase_Substrate_KEGG_Pathway <- renderImage({
+
+      req(pathview_png())
+
+      img <- pathview_png()
+
+      validate(
+        need(!is.null(img), "No Pathview image available"),
+        need(file.exists(img), "Pathview file missing")
+      )
+
+      list(
+        src = normalizePath(img, winslash = "/", mustWork = TRUE),
+        contentType = "image/png"
+      )
+    }, deleteFile = FALSE)
+
+  })
+
+}
+
+## To be copied in the UI
+# mod_merg_pathview_ui("merg_pathview_1")
+
+## To be copied in the server
+# mod_merg_pathview_server("merg_pathview_1")

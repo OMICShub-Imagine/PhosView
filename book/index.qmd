@@ -1,0 +1,56 @@
+# Welcome {.unnumbered}
+
+```{r initial}
+#| message: false
+#| warning: false
+#| include: false
+library(emojifont)
+library(BiocStyle)
+```
+
+Welcome to the PhosView User Guide. 
+
+## `r emoji("dart")` What is PhosView? {-}
+
+PhosView is an interactive Shiny application designed for the analysis of quantitative proteomics and phosphoproteomics datasets.
+
+The application provides:
+
+- Differential abundance analysis
+- Quality control plots
+- Volcano plots
+- Protein-level visualization
+- Phosphosite-level analysis
+- Kinase-substrate enrichment
+- Pathway analysis
+- Integrated proteome/phosphoproteome interpretation
+
+Note that the PhosView is mainly based on the use of `r Githubpkg("ByrumLab/proteoDA")`, `r Biocpkg("clusterProfiler")`, `r Biocpkg("PhosR")` and `r Biocpkg("pathview")` R packages.
+
+## `r emoji("memo")` Citation {-}
+
+1. Byrum S, Yuan Z, Fu Y (2026). proteoDA: Streamlined Differential Abundance Analysis of Proteomic Data. R package version 2.0.0, (https://github.com/ByrumLab/proteoDA).
+
+2. Stefan Graw, Jillian Tang, Maroof K Zafar, Alicia K Byrd, Chris Bolden, Eric C. Peterson, and Stephanie D Byrum. proteiNorm – A User-Friendly Tool for Normalization and Analysis of TMT and Label-Free Protein Quantification. ACS Omega 2020 5 (40), 25625-25633. doi: 10.1021/acsomega.0c02564
+
+3. S Xu, E Hu, Y Cai, Z Xie, X Luo, L Zhan, W Tang, Q Wang, B Liu, R Wang, W Xie, T Wu, L Xie, G Yu. Using clusterProfiler to
+  characterize multiomics data. Nature Protocols. 2024, 19(11):3292-3320
+  
+4. Kim HJ, Kim T, Hoffman NJ, Xiao D, James DE, Humphrey SJ, Yang P (2021). PhosR enables processing and functional analysis of
+  phosphoproteomic data. Cell Reports 34(8). doi:10.1016/j.celrep.2021.108771
+  
+5. Kim HJ, Kim T, Xiao D, Yang P (2021). Protocol for the processing and downstream analysis of phosphoproteomic data with PhosR.
+  STAR Protocols 2(2). doi:10.1016/j.xpro.2021.100585
+  
+6. Luo, W. and Brouwer C., Pathview: an R/Bioconductor package for pathway-based data integration and visualization. Bioinformatics,
+  2013, 29(14): 1830-1831, doi: 10.1093/bioinformatics/btt285
+
+## `r emoji("books")` User Guide structure {-}
+
+
+This User Guide will be divided in 4 parts of different length:
+
+  + Part 1 (Global Analysis) describes how to run the analysis of your non-enriched samples.This will include loading of your data, preprocessing and statistical analysis.
+  + Part 2 (Phospho Analysis) describes how to run the analysis of your phospho-enriched samples. This will include loading of your data, preprocessing of the data including how to get first class phosphosite and statistical analysis. 
+  + Part 3 (Global and Phospho Integration) show useful utilities to explore and integrate side-by-side your global and phospho data all together.
+  + Part 4 (Exports) will show you how to export your data in order to do further processing with R or also export an R session object to reload yoour session using the landing page.

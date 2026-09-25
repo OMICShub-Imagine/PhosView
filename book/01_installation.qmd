@@ -1,0 +1,19 @@
+---
+title: "Installation"
+author: "Kévin Roger"
+format: html
+editor: visual
+---
+
+## Requirement
+
+In order to install the PhosView R package, you will need to install R (>= 4.1.0).
+
+Then run the following code:
+
+```r
+if (!require("remotes")) install.packages("remotes")
+
+remotes::install_github("OMICShub-Imagine/PhosView")
+```
+
