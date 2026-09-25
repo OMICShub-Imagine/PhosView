@@ -47,7 +47,7 @@ PhosView::run_app()
 
 ## Tutorials
 
-[How to use PhosView?](docs/index.html)
+[How to use PhosView?](https://htmlpreview.github.io/?https://github.com/OMICShub-Imagine/PhosView/docs/index.html)
 
 
 ```r
