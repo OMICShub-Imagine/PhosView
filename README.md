@@ -1,16 +1,23 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# `{PhosView}`
+# PhosView
 
 <!-- badges: start -->
-
+[![R package](https://img.shields.io/badge/R%20package-1.0.0-blue)](https://github.com/OMICShub-Imagine/PhosView)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-green.svg)](https://www.gnu.org/licenses/gpl-3.0)
 <!-- badges: end -->
+
+**An Integrated and Interactive Tool for Quantitative Proteomics and Phosphoproteomics Analysis**
+
+PhosView is a golem/Shiny R package for sequential proteome and phosphoproteome analysis 
+with localization-probability QC, dual-view integration, ORA, PhosR kinase-substrate scoring 
+and Pathview maps.
 
 ## Disclaimer
 
 PhosView has been developed and tested internally on small datasets
-at the Proteomic Platform of the SFR Necker. As it is still in early development, updates will
+at the Proteomic Platform of the SFR Necker. As it is still in version 1.0.0, updates will
 be published as issues are identified and resolved.
 
 Bug reports, feature requests, and feedback are welcome:
@@ -20,7 +27,7 @@ Bug reports, feature requests, and feedback are welcome:
 
 ## Quick Start
 
-You can install the development version of `{PhosView}` like so:
+You can install the version 1.0.0 of `{PhosView}` like so:
 
 ### Installation
 
@@ -44,6 +51,40 @@ You can launch the application by running:
 library(PhosView)
 PhosView::run_app()
 ```
+
+## Input files
+
+If DIA-NN was used to process the phospho-enriched samples and associated non-enriched samples:
+
+- report.pg_matrix.tsv (and associated exp_design.txt)
+- report.phosphosite_90.tsv or report.phosphosite_99.tsv (and associated exp_design.txt)
+- Example input files are present in https://github.com/OMICShub-Imagine/PhosView/tree/main/inst/extdata/dia-nn
+
+If Spectronaut was used to process the phospho-enriched samples and associated non-enriched samples:
+
+- Use the schema specific to Spectronaut software available in https://github.com/OMICShub-Imagine/PhosView/tree/main/inst/extdata/schema_spectronaut.
+- These schema can be loaded on Spectronaut software and allows to have exactly the required columns that need to be present in input files.
+- Also, example input files are present in https://github.com/OMICShub-Imagine/PhosView/tree/main/inst/extdata/spectronaut
+
+More details about experimental file (exp_design.txt):
+
+| Column | Required | Description |
+|--------|----------|-------------|
+| `Sample_ID` | Yes | Quantitative column name present in input files (only quant columns) |
+| `Simplify_ID` | Yes | Shorter name of Sample_ID (avoid any special character and used _ as separator (CTRL_01, KO_01...)) |
+| `group` | Yes | Biological group (CTL, KO...) |
+
+
+## Key Features
+
+- Sequentially preprocesses and tests based on proteoDA workflow.
+- Quality control reports at each step of the analysis.
+- Phosphosite quality control report.
+- Dual-view explorer.
+- clusterProfiler-based ORA (**available taxonomy: *Homo sapiens* and *Mus musculus***).
+- PhosR kinase-substrate inference (**PhosphoSitePlus annotation snapshot not been updated for several years**)
+- Pathview KEGG maps.
+- Quality control reports at each step of the analysis.
 
 ## Tutorials
 
@@ -72,10 +113,10 @@ PhosView wraps several published methods.
 
 | Tool | Citation |
 |------|----------|
-| **proteoDA** | Thurman TJ, Washam CL, Alkam D, Bird JT, Gies A, Dhusia K, et al. **proteoDA: a package for quantitative proteomics.** Journal of Open Source Software. 30 mai 2023;8(85):5184. [doi:10.21105/joss.05184](https://doi:10.21105/joss.05184) |
-| **clusterProfiler** | Wu T, Hu E, Xu S, Chen M, Guo P, Dai Z, et al. **clusterProfiler 4.0: A universal enrichment tool for interpreting omics data.** The Innovation. août 2021;2(3):100141. [doi:10.1016/j.xinn.2021.100141](https://doi:10.1016/j.xinn.2021.100141) |
-| **PhosR** | Kim HJ, Kim T, Xiao D, Yang P. **Protocol for the processing and downstream analysis of phosphoproteomic data with PhosR.** STAR Protocols. juin 2021;2(2):100585. [doi:10.1016/j.xpro.2021.100585](https://doi:10.1016/j.xpro.2021.100585) |
-| **Pathview** | Luo W, Brouwer C. **Pathview: an R/Bioconductor package for pathway-based data integration and visualization.** Bioinformatics. 15 juill 2013;29(14):1830‑1. [doi:10.1093/bioinformatics/btt285](https://doi:10.1093/bioinformatics/btt285) |
+| **proteoDA** | Thurman TJ, Washam CL, Alkam D, Bird JT, Gies A, Dhusia K, et al. **proteoDA: a package for quantitative proteomics.** Journal of Open Source Software. 30 mai 2023;8(85):5184. [doi:10.21105/joss.05184](https://doi.org/10.21105/joss.05184) |
+| **clusterProfiler** | Wu T, Hu E, Xu S, Chen M, Guo P, Dai Z, et al. **clusterProfiler 4.0: A universal enrichment tool for interpreting omics data.** The Innovation. août 2021;2(3):100141. [doi:10.1016/j.xinn.2021.100141](https://doi.org/10.1016/j.xinn.2021.100141) |
+| **PhosR** | Kim HJ, Kim T, Xiao D, Yang P. **Protocol for the processing and downstream analysis of phosphoproteomic data with PhosR.** STAR Protocols. juin 2021;2(2):100585. [doi:10.1016/j.xpro.2021.100585](https://doi.org/10.1016/j.xpro.2021.100585) |
+| **Pathview** | Luo W, Brouwer C. **Pathview: an R/Bioconductor package for pathway-based data integration and visualization.** Bioinformatics. 15 juill 2013;29(14):1830‑1. [doi:10.1093/bioinformatics/btt285](https://doi.org/10.1093/bioinformatics/btt285) |
 
 
 ## Authors
