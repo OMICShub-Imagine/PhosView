@@ -68,6 +68,7 @@ Suggests:
     rmarkdown,
     spelling,
     testthat (>= 3.0.0)
+    quarto
 Config/testthat/edition: 3
 Language: en-US
 Remotes: 
