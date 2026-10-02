@@ -16,7 +16,7 @@ and Pathview maps.
 
 # PhosView Overview
 
-<img src="book/images/PhosView_graphical_abstract.png" align="center"/>
+<img src="book/images/PhosView_Graphical_Abstract.png" align="center"/>
 
 
 ## Disclaimer
