@@ -36,7 +36,7 @@
 filter_phosphosite_by_proportion_onegrp <- function(DAList,
                                                  min_prop = NULL,
                                                  grouping_column = "group") {
-  proteoDA:::validate_DAList(DAList)
+  validate_DAList_local(DAList)
 
   if (is.null(DAList$metadata)) {
     cli::cli_abort(c("The {.arg DAList} object must include metadata to filter phosphosite by group"))
@@ -97,7 +97,7 @@ filter_phosphosite_by_proportion_onegrp <- function(DAList,
   # Add tags to track filtering
   out$tags$filter_phosphosite_by_proportion <- c(out$tags$filter_phosphosite_by_proportion, list(min_prop = min_prop, grouping_column = grouping_column))
 
-  proteoDA:::validate_DAList(out)
+  validate_DAList_local(out)
 
   return(out)
 }

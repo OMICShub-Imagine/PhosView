@@ -59,7 +59,7 @@ filter_samples2 <- function(DAList, condition) {
 
   DAList$metadata <- meta_kept
   DAList$data <- DAList$data[, rownames(DAList$metadata)]
-  proteoDA:::validate_DAList(DAList) ### modify adding "proteoDA::" if not it will not be found
+  validate_DAList_local(DAList)
 
   cli::cli_inform("Removed {.val {nrow(meta_removed)}} of the {.val {nrow(in_meta)}} {cli::qty(nrow(in_meta))} sample{?s} in DAList")
   cli::cli_inform("{cli::qty(nrow(meta_removed))} Sample{?s} removed:")
