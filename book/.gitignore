@@ -1,2 +1,4 @@
-/.quarto/
+# Quarto
+**/.quarto/
+**/*_files/
 **/*.quarto_ipynb
