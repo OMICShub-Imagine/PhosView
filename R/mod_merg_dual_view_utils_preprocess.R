@@ -7,6 +7,15 @@
 #'   (glob$result()$stats_data)
 #' @param phos_stats List. The phospho analysis stats_data
 #'   (phos$result()$stats_data)
+#' @param protein_id_col_glob Protein ID column in the global dataset.
+#' @param protein_id_col_phos Protein ID column in the phosphoproteomics dataset.
+#' @param gene_col_glob Gene column in the global dataset.
+#' @param gene_col_phos Gene column in the phosphoproteomics dataset.
+#' @param name_col_glob Protein name column in the global dataset.
+#' @param name_col_phos Protein name column in the phosphoproteomics dataset.
+#' @param desc_col_glob Protein description column in the global dataset.
+#' @param desc_col_phos Protein description column in the phosphoproteomics dataset.
+#' @param phospho_site_col Phosphorylation site column.
 #'
 #' @return A tibble/data.frame containing combined global + phospho data,
 #'   with processed columns ready for dashboard display.

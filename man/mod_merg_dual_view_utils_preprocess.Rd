@@ -24,6 +24,24 @@ mod_merg_dual_view_utils_preprocess(
 
 \item{phos_stats}{List. The phospho analysis stats_data
 (phos$result()$stats_data)}
+
+\item{protein_id_col_glob}{Protein ID column in the global dataset.}
+
+\item{protein_id_col_phos}{Protein ID column in the phosphoproteomics dataset.}
+
+\item{gene_col_glob}{Gene column in the global dataset.}
+
+\item{gene_col_phos}{Gene column in the phosphoproteomics dataset.}
+
+\item{name_col_glob}{Protein name column in the global dataset.}
+
+\item{name_col_phos}{Protein name column in the phosphoproteomics dataset.}
+
+\item{desc_col_glob}{Protein description column in the global dataset.}
+
+\item{desc_col_phos}{Protein description column in the phosphoproteomics dataset.}
+
+\item{phospho_site_col}{Phosphorylation site column.}
 }
 \value{
 A tibble/data.frame containing combined global + phospho data,

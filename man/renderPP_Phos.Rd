@@ -22,6 +22,12 @@ identifiers and experimental group assignments.}
 
 \item{user_gene_list}{Optional character vector of gene names to display
 in the profile plot.}
+
+\item{gene_col_phos}{Gene column in the phosphoproteomics dataset.}
+
+\item{protein_id_col_phos}{Protein ID column in the phosphoproteomics dataset.}
+
+\item{phospho_site_col}{Phosphorylation site column.}
 }
 \value{
 A \pkg{plotly} object representing the phosphosite intensity profile.

@@ -124,6 +124,8 @@ renderVolcano_Phos <- function(data, comparison, user_gene_list = NULL) {
 #'   identifiers and experimental group assignments.
 #' @param user_gene_list Optional character vector of gene names to display
 #'   in the profile plot.
+#' @param protein_id_col_glob Protein ID column in the global dataset.
+#' @param gene_col_glob Gene column in the global dataset.
 #'
 #' @return A \pkg{plotly} object representing the global protein intensity profile.
 #'
@@ -184,6 +186,9 @@ renderPP_Glob <- function(
 #'   identifiers and experimental group assignments.
 #' @param user_gene_list Optional character vector of gene names to display
 #'   in the profile plot.
+#' @param protein_id_col_phos Protein ID column in the phosphoproteomics dataset.
+#' @param gene_col_phos Gene column in the phosphoproteomics dataset.
+#' @param phospho_site_col Phosphorylation site column.
 #'
 #' @return A \pkg{plotly} object representing the phosphosite intensity profile.
 #'
@@ -252,8 +257,14 @@ renderPP_Phos <- function(
 #'   results, including log fold-changes and significance flags.
 #' @param comparison Character scalar specifying the comparison name used to
 #'   construct column names.
+#' @param protein_id_col_glob Protein ID column in the global dataset.
+#' @param protein_id_col_phos Protein ID column in the phosphoproteomics dataset.
+#' @param gene_col_glob Gene column in the global dataset.
+#' @param gene_col_phos Gene column in the phosphoproteomics dataset.
 #' @param user_gene_list Optional character vector of gene names to highlight
 #'   in the dual fold-change plot.
+#' @param phospho_site_col Phosphorylation site column.
+#' @param desc_col_phos Protein description column in the phosphoproteomics dataset.
 #'
 #' @return A \pkg{plotly} object representing the dual fold-change scatter plot.
 #'

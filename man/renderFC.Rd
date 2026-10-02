@@ -27,6 +27,18 @@ results, including log fold-changes and significance flags.}
 \item{comparison}{Character scalar specifying the comparison name used to
 construct column names.}
 
+\item{protein_id_col_glob}{Protein ID column in the global dataset.}
+
+\item{protein_id_col_phos}{Protein ID column in the phosphoproteomics dataset.}
+
+\item{gene_col_glob}{Gene column in the global dataset.}
+
+\item{gene_col_phos}{Gene column in the phosphoproteomics dataset.}
+
+\item{desc_col_phos}{Protein description column in the phosphoproteomics dataset.}
+
+\item{phospho_site_col}{Phosphorylation site column.}
+
 \item{user_gene_list}{Optional character vector of gene names to highlight
 in the dual fold-change plot.}
 }

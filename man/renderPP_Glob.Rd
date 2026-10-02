@@ -21,6 +21,10 @@ identifiers and experimental group assignments.}
 
 \item{user_gene_list}{Optional character vector of gene names to display
 in the profile plot.}
+
+\item{gene_col_glob}{Gene column in the global dataset.}
+
+\item{protein_id_col_glob}{Protein ID column in the global dataset.}
 }
 \value{
 A \pkg{plotly} object representing the global protein intensity profile.
