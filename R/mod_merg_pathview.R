@@ -171,7 +171,7 @@ mod_merg_pathview_server <- function(id,
       cat("Structure:", str(df), "\n")
 
       if (is.null(df) || nrow(df) == 0 || all(is.na(df$gene))) {
-        message("Empty kinsub_selected_results() → skipping Pathview")
+        message("Empty kinsub_selected_results() : skipping Pathview")
         return(numeric(0))
       }
 
@@ -181,7 +181,7 @@ mod_merg_pathview_server <- function(id,
       cat("Example genes:", paste(head(genes, 10), collapse = ", "), "\n")
 
       if (length(genes) == 0) {
-        message("No valid genes → skipping Pathview")
+        message("No valid genes : skipping Pathview")
         return(numeric(0))
       }
 

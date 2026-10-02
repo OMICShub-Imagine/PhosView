@@ -121,7 +121,7 @@ compute_pathview <- function(
   if (is.null(final_input) || nrow(final_input) == 0 ||
       all(is.na(final_input$gene))) {
 
-    message("No phosphosite/kinase signal → skipping Pathview pipeline")
+    message("No phosphosite/kinase signal : skipping Pathview pipeline")
 
     return(list(
       final_input = tibble::tibble(
