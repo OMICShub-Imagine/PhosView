@@ -3,19 +3,20 @@ Type: Package
 Title: PhosView: An Integrated and Interactive Tool for Quantitative Proteomics and Phosphoproteomics Analysis
 Version: 1.0.0
 Date: 2026-08-12
-Authors@R: 
+Authors@R:c( 
     person(
      "Kevin", "Roger", 
       email = "kevin.roger@inserm.fr", 
       role = c("aut", "cre"),
       comment = c(ORCID = "0000-0003-1353-3415", 
                  affiliation = "Proteomics platform Necker, Université Paris Cité - SFR Necker, INSERM US24/CNRS UAR3633, Paris, France
-                               Bioinformatics Core Platform, Imagine Institute, INSERM UMR1163 and SFR Necker, INSERM US24/CNRS UAR3633, Université Paris Cité, Paris, France")
+                               Bioinformatics Core, SFR Necker - Institut Imagine, INSERM U1163, Paris, France")
     ),
     person(
       "Maria Emilia", "Puig Lombardi",
       role = "ths",
       comment = c(affiliation = "Bioinformatics Core, SFR Necker - Institut Imagine, INSERM U1163, Paris, France")
+    )
     )
 Description: The goal of the PhosView app is to analyze data from global proteomics experiment associated
              with phosphoproteomics and process with Spectronaut (version >= 20.0) or DIA-NN (version >=2.2) software. 
