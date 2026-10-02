@@ -72,7 +72,7 @@ More details about experimental file (exp_design.txt):
 |--------|----------|-------------|
 | `Sample_ID` | Yes | Quantitative column name present in input files (only quant columns) |
 | `Simplify_ID` | Yes | Shorter name of Sample_ID (avoid any special character and used _ as separator (CTRL_01, KO_01...)) |
-| `group` | Yes | Biological group (CTL, KO...) |
+| `group` | Yes | Biological group (CTRL, KO...) |
 
 
 ## Key Features
