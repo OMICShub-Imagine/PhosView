@@ -17,7 +17,6 @@ Authors@R:
       role = "ths",
       comment = c(affiliation = "Bioinformatics Core, SFR Necker - Institut Imagine, INSERM U1163, Paris, France")
     )
-            
 Description: The goal of the PhosView app is to analyze data from global proteomics experiment associated
              with phosphoproteomics and process with Spectronaut (version >= 20.0) or DIA-NN (version >=2.2) software. 
              It also allows to perform integrated statistical and downstream bioinformatics analysis.
