@@ -1,5 +1,5 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<img src="book/images/PhosView_logo.png" align="right" width="200" height="200" />
 
 # PhosView
 
@@ -13,6 +13,11 @@
 PhosView is a golem/Shiny R package for sequential proteome and phosphoproteome analysis 
 with localization-probability QC, dual-view integration, ORA, PhosR kinase-substrate scoring 
 and Pathview maps.
+
+# PhosView Overview
+
+<img src="book/images/PhowView_graphical_abstract.png" align="center"/>
+
 
 ## Disclaimer
 
