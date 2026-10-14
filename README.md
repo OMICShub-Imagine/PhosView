@@ -135,3 +135,7 @@ PhosView wraps several published methods.
 
 GPL (>= 3)
 
+## Session information
+
+See [`sessionInfo.txt`](sessionInfo.txt) for details about the R environment and loaded packages.
+
