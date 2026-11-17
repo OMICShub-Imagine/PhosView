@@ -93,7 +93,7 @@ More details about experimental file (exp_design.txt):
 
 ## Tutorials
 
-[How to use PhosView?](https://htmlpreview.github.io/?https://github.com/OMICShub-Imagine/PhosView/blob/main/docs/index.html)
+[How to use PhosView?](https://omicshub-imagine.github.io/PhosView/)
 
 
 ```r
