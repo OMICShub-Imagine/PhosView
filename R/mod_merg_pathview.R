@@ -142,19 +142,6 @@ mod_merg_pathview_server <- function(id,
     # ---- Build geneList for Pathview ----
     geneList_pathview <- reactive({
 
-      cat("\nENTERING geneList_pathview()\n")
-
-      cat("Checking kinsub_selected_results...\n")
-      print(is.null(kinsub_selected_results()))
-
-      cat("Checking AnnotDb...\n")
-      print(is.null(AnnotDb()))
-
-      req(kinsub_selected_results())
-      req(AnnotDb())
-
-      cat("Passed req()\n")
-
       req(kinsub_selected_results(), AnnotDb())
 
       cat("\nMODULE INPUT CHECK\n")
@@ -166,9 +153,6 @@ mod_merg_pathview_server <- function(id,
       message("geneList_pathview() entered")
 
       df <- kinsub_selected_results()
-      cat("Rows in kinsub_selected_results():", nrow(df), "\n")
-      cat("Unique gene (raw):", length(unique(df$gene)), "\n")
-      cat("Structure:", str(df), "\n")
 
       if (is.null(df) || nrow(df) == 0 || all(is.na(df$gene))) {
         message("Empty kinsub_selected_results() : skipping Pathview")

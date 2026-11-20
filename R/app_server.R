@@ -124,9 +124,6 @@ app_server <- function(input, output, session) {
 
   })
 
-  # ======================================================
-  # YOUR ORIGINAL SERVER LOGIC (UNCHANGED EXCEPT WRAPPED)
-  # ======================================================
 
   glob <- mod_glob_server("glob")
 
