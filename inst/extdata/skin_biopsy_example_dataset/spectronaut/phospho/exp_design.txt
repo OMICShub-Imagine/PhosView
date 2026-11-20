@@ -1,0 +1,21 @@
+Sample_ID	Simplify_ID	group
+[1] 241014_AlHO_nE_TTP_DIA_PC_Phospho_1_plesee_Slot2-70_1_12942.d.PTM.Quantity	PC_1_L	L
+[2] 241014_AlHO_nE_TTP_DIA_PC_Phospho_2_plesee_Slot2-72_1_12943.d.PTM.Quantity	PC_2_L	L
+[3] 241014_AlHO_nE_TTP_DIA_PC_Phospho_3_plesee _Slot2-74_1_12944.d.PTM.Quantity	PC_3_L	L
+[4] 241014_AlHO_nE_TTP_DIA_PC_Phospho_4_plesee _Slot2-76_1_12945.d.PTM.Quantity	PC_4_L	L
+[5] 241014_AlHO_nE_TTP_DIA_PC_Phospho_5_plesee_Slot2-78_1_12946.d.PTM.Quantity	PC_5_L	L
+[6] 241014_AlHO_nE_TTP_DIA_PC_Phospho_6_plesee_Slot2-80_1_12954.d.PTM.Quantity	PC_6_L	L
+[7] 241014_AlHO_nE_TTP_DIA_PC_Phospho_7_plesee_Slot2-82_1_12955.d.PTM.Quantity	PC_7_L	L
+[8] 241014_AlHO_nE_TTP_DIA_PC_Phospho_8_plesee_Slot2-84_1_12956.d.PTM.Quantity	PC_8_L	L
+[9] 241014_AlHO_nE_TTP_DIA_PC_Phospho_9_plesee_Slot2-86_1_12957.d.PTM.Quantity	PC_9_L	L
+[10] 241014_AlHO_nE_TTP_DIA_PC_Phospho_10_plesee_Slot2-89_1_12958.d.PTM.Quantity	PC_10_L	L
+[11] 241014_AlHO_nE_TTP_DIA_PC_Phospho_1_psaine_Slot2-69_1_12936.d.PTM.Quantity	PC_1_NL	NL
+[12] 241014_AlHO_nE_TTP_DIA_PC_Phospho_2_psaine_Slot2-71_1_12937.d.PTM.Quantity	PC_2_NL	NL
+[13] 241014_AlHO_nE_TTP_DIA_PC_Phospho_3_psaine _Slot2-73_1_12938.d.PTM.Quantity	PC_3_NL	NL
+[14] 241014_AlHO_nE_TTP_DIA_PC_Phospho_4_psaine_Slot2-75_1_12939.d.PTM.Quantity	PC_4_NL	NL
+[15] 241014_AlHO_nE_TTP_DIA_PC_Phospho_5_psaine_Slot2-77_1_12940.d.PTM.Quantity	PC_5_NL	NL
+[16] 241014_AlHO_nE_TTP_DIA_PC_Phospho_6_psaine_Slot2-79_1_12948.d.PTM.Quantity	PC_6_NL	NL
+[17] 241014_AlHO_nE_TTP_DIA_PC_Phospho_7_psaine_Slot2-81_1_12949.d.PTM.Quantity	PC_7_NL	NL
+[18] 241014_AlHO_nE_TTP_DIA_PC_Phospho_8_psaine_Slot2-83_1_12950.d.PTM.Quantity	PC_8_NL	NL
+[19] 241014_AlHO_nE_TTP_DIA_PC_Phospho_9_psaine_Slot2-85_1_12951.d.PTM.Quantity	PC_9_NL	NL
+[20] 241014_AlHO_nE_TTP_DIA_PC_Phospho_10_psaine_Slot2-88_1_12952.d.PTM.Quantity	PC_10_NL	NL
