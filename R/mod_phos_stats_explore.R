@@ -57,7 +57,7 @@ mod_phos_stats_explore_server <- function(id, DAlist_obj){
         list(
           col_pg   = "Protein",
           col_gene = "Gene.Names",
-          col_desc = "First.Protein.Description"
+          col_desc <-  NULL
         )
       } else if ("PG.ProteinGroups" %in% colnames(DAlist_obj()$annotation)) {
         list(

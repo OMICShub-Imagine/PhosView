@@ -39,7 +39,7 @@ mod_phos_stats_explore_fct_vizu <- function(stats_data, comparison, user_phos_li
   if ("Protein" %in% colnames(stats_data$annotation)) {
     col_pg <- "Protein"
     col_gene <- "Gene.Names"
-    col_desc <- "First.Protein.Description"
+    col_desc <-  NULL
   } else if ("PG.ProteinGroups" %in% colnames(stats_data$annotation)) {
     col_pg <- "PG.ProteinGroups"
     col_gene <- "PG.Genes"
@@ -73,28 +73,56 @@ mod_phos_stats_explore_fct_vizu <- function(stats_data, comparison, user_phos_li
     "selected" = "black"
   )
 
-  g_volcano <- ggplot(df_volcano, aes(x = logFC, y = -log10(P.Value), color = point_color,
-                                      text = paste0("Phosphosite: ", uniprot_id,
-                                                    "<br>Gene: ", .data[[col_gene]],
-                                                    "<br>Description: ", .data[[col_desc]],
-                                                    "<br>log2FC: ", logFC,
-                                                    "<br>P.Value: ", P.Value))) +
+  # Build tooltip dynamically
+  tooltip_text <- paste0(
+    "Phosphosite: ", df_volcano$uniprot_id,
+    "<br>Gene: ", df_volcano[[col_gene]]
+  )
+
+  if (!is.null(col_desc)) {
+    tooltip_text <- paste0(
+      tooltip_text,
+      "<br>Description: ", df_volcano[[col_desc]]
+    )
+  }
+
+  tooltip_text <- paste0(
+    tooltip_text,
+    "<br>log2FC: ", df_volcano$logFC,
+    "<br>P.Value: ", df_volcano$P.Value
+  )
+
+  df_volcano$tooltip <- tooltip_text
+
+  g_volcano <- ggplot(
+    df_volcano,
+    aes(
+      x = logFC,
+      y = -log10(P.Value),
+      color = point_color,
+      text = tooltip
+    )
+  ) +
     geom_point(alpha = 0.5) +
     scale_color_manual(values = colors_volcano) +
-    labs(title = paste("Volcano plot:", comparison),
-         x = "log2FC",
-         y = "-log10(P.Value)") +
-    theme(axis.ticks = element_line(),
-          legend.position = "bottom",
-          legend.key = element_rect(fill = "white"),
-          axis.line = element_line(colour = "black"),
-          panel.grid.major = element_blank(),
-          panel.grid.minor = element_blank(),
-          panel.border = element_blank(),
-          panel.background = element_blank(),
-          text = element_text(size = 10),
-          axis.text.x = element_text(size = 10),
-          axis.text.y = element_text(size = 10))
+    labs(
+      title = paste("Volcano plot:", comparison),
+      x = "log2FC",
+      y = "-log10(P.Value)"
+    ) +
+    theme(
+      axis.ticks = element_line(),
+      legend.position = "bottom",
+      legend.key = element_rect(fill = "white"),
+      axis.line = element_line(colour = "black"),
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(),
+      panel.border = element_blank(),
+      panel.background = element_blank(),
+      text = element_text(size = 10),
+      axis.text.x = element_text(size = 10),
+      axis.text.y = element_text(size = 10)
+    )
 
   ############################ PROFILE PLOT #########################################
 
