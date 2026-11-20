@@ -45,7 +45,7 @@ mod_phos_ui <- function(id) {
              fluidRow(
                column(12, offset = 0, style = "text-align: right;",
                       h4("Step 4: Move on the next step:"),
-                      actionButton(ns("filter_sample_done"), "GO to the the Filter phosphosite(s) step",
+                      actionButton(ns("filter_sample_done"), "GO to the Filter phosphosite(s) step",
                                    class = "btn-lg btn-success")
                )
              )),
@@ -69,7 +69,7 @@ mod_phos_ui <- function(id) {
              fluidRow(
                column(12, offset = 0, style = "text-align: right;",
                       h4("Step 5: Move on the next step:"),
-                      actionButton(ns("normalization_done"), "GO to Imputation step",
+                      actionButton(ns("normalization_done"), "GO to the Imputation step",
                                    class = "btn-lg btn-success")
                )
              )),
@@ -81,7 +81,7 @@ mod_phos_ui <- function(id) {
              fluidRow(
                column(12, offset = 0, style = "text-align: right;",
                       h4("Step 3: Move on the next step:"),
-                      actionButton(ns("imputation_done"), "GO to Statistics step",
+                      actionButton(ns("imputation_done"), "GO to the Statistics step",
                                    class = "btn-lg btn-success")
                )
              )),
@@ -93,7 +93,7 @@ mod_phos_ui <- function(id) {
              fluidRow(
                column(12, offset = 0, style = "text-align: right;",
                       h4("Step 6: Move on to the INTEGRATION analysis:"),
-                      actionButton(ns("phos_done"), "GO to INTEGRATION analysis",
+                      actionButton(ns("phos_done"), "GO to the INTEGRATION analysis",
                                    class = "btn-lg btn-success")
                )
              ))
