@@ -54,7 +54,7 @@ mod_phos_norm_transform_server <- function(id, DAlist_obj){
           label = "Select one of the following normalization method:",
           choices = c("median normalization followed by log2 transformation",
                       "mean normalization followed by log2 transformation",
-                      "vsn (variance stabilizing normalization) normalisation followed by log2 transformation",
+                      "vsn (variance stabilizing normalization) normalization followed by log2 transformation",
                       "quantile normalization followed by log2 transformation",
                       "cycloess (cyclic loess) normalization followed by log2 transformation",
                       "rlr (robust linear regression) normalization followed by log2 transformation",
