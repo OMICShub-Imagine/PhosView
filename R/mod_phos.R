@@ -31,7 +31,7 @@ mod_phos_ui <- function(id) {
                ns("DAlist")),
              fluidRow(
                column(12, style = "text-align: right;",
-                      h4("Step 5: Move on the next step:"),
+                      h4("Step 3: Move on the next step:"),
                       actionButton(ns("DAlist_done"),
                                    "GO to the Filter sample(s) step",
                                    class = "btn-lg btn-success")
