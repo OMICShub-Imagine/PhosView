@@ -59,17 +59,26 @@ PhosView::run_app()
 
 ## Input files
 
+PhosView can be tested and evaluated through two different dataset:
+
+- an EGF short stimulation dataset where differential changes occur mainly at the phosphosite level with almost no changes
+at the protein level (https://github.com/OMICShub-Imagine/PhosView/tree/main/inst/extdata/EGF_stimulation_example_dataset)
+- a skin biopsy dataset where differential changes occur at the same time at the protein level and phosphosite level 
+(https://github.com/OMICShub-Imagine/PhosView/tree/main/inst/extdata/skin_biopsy_example_dataset/spectronaut)
+
+
 If DIA-NN was used to process the phospho-enriched samples and associated non-enriched samples:
 
 - report.pg_matrix.tsv (and associated exp_design.txt)
 - report.phosphosite_90.tsv or report.phosphosite_99.tsv (and associated exp_design.txt)
-- Example input files are present in https://github.com/OMICShub-Imagine/PhosView/tree/main/inst/extdata/dia-nn
+- Example input files are present in https://github.com/OMICShub-Imagine/PhosView/tree/main/inst/extdata/EGF_stimulation_example_dataset/dia-nn
 
 If Spectronaut was used to process the phospho-enriched samples and associated non-enriched samples:
 
 - Use the schema specific to Spectronaut software available in https://github.com/OMICShub-Imagine/PhosView/tree/main/inst/extdata/schema_spectronaut.
 - These schema can be loaded on Spectronaut software and allows to have exactly the required columns that need to be present in input files.
-- Also, example input files are present in https://github.com/OMICShub-Imagine/PhosView/tree/main/inst/extdata/spectronaut
+- Also, example input files are present in https://github.com/OMICShub-Imagine/PhosView/tree/main/inst/extdata/EGF_stimulation_example_dataset/spectronaut or
+https://github.com/OMICShub-Imagine/PhosView/tree/main/inst/extdata/skin_biopsy_example_dataset/spectronaut
 
 More details about experimental file (exp_design.txt):
 
