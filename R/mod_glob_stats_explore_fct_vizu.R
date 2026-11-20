@@ -82,16 +82,16 @@ mod_glob_stats_explore_fct_vizu <- function(stats_data, comparison, user_gene_li
     "selected" = "black"
   )
 
-  g_volcano <- ggplot(df_volcano, aes(x = logFC, y = -log10(adj.P.Val), color = point_color,
+  g_volcano <- ggplot(df_volcano, aes(x = logFC, y = -log10(P.Value), color = point_color,
                                       text = paste0("Gene: ", .data[[col_gene]],
                                                     "<br>Description: ", .data[[col_desc]],
-                                                    "<br>logFC: ", logFC,
-                                                    "<br>adj.P.Val: ", adj.P.Val))) +
+                                                    "<br>log2FC: ", logFC,
+                                                    "<br>P.Value: ", P.Value))) +
     geom_point(alpha = 0.5) +
     scale_color_manual(values = colors_volcano) +
     labs(title = paste("Volcano plot: ", comparison),
-         x = "logFC",
-         y = "-log10(adj.P.Val)") +
+         x = "log2FC",
+         y = "-log10(P.Value)") +
     theme(axis.ticks = element_line(),
           legend.position = "bottom",
           legend.key = element_rect(fill = "white"),

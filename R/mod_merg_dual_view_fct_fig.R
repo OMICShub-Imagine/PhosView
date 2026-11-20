@@ -34,7 +34,7 @@ renderVolcano_Glob <- function(data, comparison, user_gene_list = NULL) {
   plotly::plot_ly(
     data,
     x = ~get(paste0(comparison, ".logFC_GlobalAnalysis")),
-    y = ~-log10(get(paste0(comparison, ".adj.P.Val_GlobalAnalysis"))),
+    y = ~-log10(get(paste0(comparison, ".P.Value_GlobalAnalysis"))),
     type = 'scatter',
     mode = 'markers',
     color = ~point_color,
@@ -43,15 +43,15 @@ renderVolcano_Glob <- function(data, comparison, user_gene_list = NULL) {
     text = ~paste0(
       "Gene: ", get("PG.Genes"), "<br>",
       "Description: ", get("PG.ProteinDescriptions"), "<br>",
-      "LogFC: ", get(paste0(comparison, ".logFC_GlobalAnalysis")), "<br>",
-      "-log10(p-value): ", -log10(get(paste0(comparison, ".adj.P.Val_GlobalAnalysis")))
+      "Log2FC: ", get(paste0(comparison, ".logFC_GlobalAnalysis")), "<br>",
+      "-log10(p-value): ", -log10(get(paste0(comparison, ".P.Value_GlobalAnalysis")))
     ),
     hoverinfo = 'text'
   ) %>%
     plotly::layout(
       title = "Volcano Plot (Global Analysis)",
-      xaxis = list(title = paste0(comparison, ".logFC")),
-      yaxis = list(title = paste0("-log10(", comparison, ".adj.P.Val)"))
+      xaxis = list(title = paste0(comparison, ".log2FC")),
+      yaxis = list(title = paste0("-log10(", comparison, ".P.Value)"))
     )
 }
 
@@ -89,7 +89,7 @@ renderVolcano_Phos <- function(data, comparison, user_gene_list = NULL) {
   plotly::plot_ly(
     data,
     x = ~get(paste0(comparison, ".logFC_PhosphoAnalysis")),
-    y = ~-log10(get(paste0(comparison, ".adj.P.Val_PhosphoAnalysis"))),
+    y = ~-log10(get(paste0(comparison, ".P.Value_PhosphoAnalysis"))),
     type = 'scatter',
     mode = 'markers',
     color = ~point_color,
@@ -99,15 +99,15 @@ renderVolcano_Phos <- function(data, comparison, user_gene_list = NULL) {
       "PhosphoSite: ", get("PTM.CollapseKey"), "<br>",
       "Gene: ", get("PG.Genes"), "<br>",
       "Description: ", get("PG.ProteinDescriptions"), "<br>",
-      "LogFC: ", get(paste0(comparison, ".logFC_PhosphoAnalysis")), "<br>",
-      "-log10(p-value): ", -log10(get(paste0(comparison, ".adj.P.Val_PhosphoAnalysis")))
+      "Log2FC: ", get(paste0(comparison, ".logFC_PhosphoAnalysis")), "<br>",
+      "-log10(p-value): ", -log10(get(paste0(comparison, ".P.Value_PhosphoAnalysis")))
     ),
     hoverinfo = 'text'
   ) %>%
     plotly::layout(
       title = "Volcano Plot (Phospho Analysis)",
-      xaxis = list(title = paste0(comparison, ".logFC")),
-      yaxis = list(title = paste0("-log10(", comparison, ".adj.P.Val)"))
+      xaxis = list(title = paste0(comparison, ".log2FC")),
+      yaxis = list(title = paste0("-log10(", comparison, ".P.Value)"))
     )
 }
 
