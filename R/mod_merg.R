@@ -108,13 +108,19 @@ mod_merg_server <- function(id, glob, phos, restored_session = reactive(NULL)){
     #==============================================================
     # SESSION PATHVIEW DIR
     #==============================================================
-    pathview_dir <- reactiveVal(NULL)
 
-    observeEvent(TRUE, {
-      dir <- file.path(tempdir(), paste0("pathview_", session$token))
-      dir.create(dir, showWarnings = FALSE, recursive = TRUE)
-      pathview_dir(dir)
-    }, once = TRUE)
+    pathview_dir <- file.path(
+      tempdir(),
+      paste0("pathview_", session$token)
+    )
+
+    dir.create(
+      pathview_dir,
+      showWarnings = FALSE,
+      recursive = TRUE
+    )
+
+    message("PathView session directory: ", pathview_dir)
 
     #==============================================================
     # DATA ACCESS
@@ -316,72 +322,142 @@ mod_merg_server <- function(id, glob, phos, restored_session = reactive(NULL)){
 
     pathview_results <- reactiveVal(NULL)
     saved_taxo <- reactiveVal(NULL)
+    taxo_restore_pending <- reactiveVal(FALSE)
 
-    observe({
+    # ---- RESTORE SAVED PATHVIEW RESULTS ----
+
+    # ---- RESTORE SAVED PATHVIEW RESULTS ----
+
+    observeEvent(restored_session(), {
+
+      message("\n=== RESTORATION OBSERVER EXECUTED ===")
 
       sess <- restored_session()
       req(sess)
 
-      # restore taxo FIRST (no dependency on input$taxo)
-      if (!is.null(sess$taxo)) {
+      message("Session fields: ", paste(names(sess), collapse = ", "))
+      message("Saved taxo: '", sess$taxo, "'")
 
-        saved_taxo(sess$taxo)
+      message("=== RESTORING PATHVIEW SESSION ===")
+
+      # 1. Restore PathView results first
+      if (!is.null(sess$pathview)) {
+        pathview_results(sess$pathview)
+        message("Saved PathView results restored")
+      }
+
+      # 2. Recover taxonomy from saved session
+      restored_taxo <- sess$taxo
+
+      # The saved taxonomy may be NULL or an empty string
+      if (is.null(restored_taxo) ||
+          length(restored_taxo) == 0 ||
+          is.na(restored_taxo[1]) ||
+          trimws(restored_taxo[1]) == "") {
+
+        message("Saved taxonomy is empty. Inferring from KEGG results...")
+
+        restored_taxo <- NULL
+
+        # Inspect saved KEGG enrichment results
+        if (!is.null(sess$pathview$enrichment)) {
+
+          kegg_ids <- unlist(
+            lapply(sess$pathview$enrichment, function(x) {
+
+              if (!is.null(x$KEGG) &&
+                  !is.null(x$KEGG@result) &&
+                  nrow(x$KEGG@result) > 0) {
+
+                return(x$KEGG@result$ID)
+              }
+
+              return(character(0))
+            }),
+            use.names = FALSE
+          )
+
+          message("KEGG pathway ID examples: ",
+                  paste(head(kegg_ids, 10), collapse = ", "))
+
+          if (any(grepl("^hsa", kegg_ids))) {
+
+            restored_taxo <- "human"
+
+          } else if (any(grepl("^mmu", kegg_ids))) {
+
+            restored_taxo <- "mouse"
+          }
+        }
+      }
+
+      message("Recovered taxonomy: ", restored_taxo)
+
+      # 3. Restore taxonomy radio button
+      if (!is.null(restored_taxo) &&
+          length(restored_taxo) == 1 &&
+          !is.na(restored_taxo) &&
+          restored_taxo %in% c("human", "mouse")) {
+
+        saved_taxo(restored_taxo)
+
+        taxo_restore_pending(
+          !identical(input$taxo, restored_taxo)
+        )
 
         updateRadioButtons(
           session,
           "taxo",
-          selected = sess$taxo
+          selected = restored_taxo
+        )
+
+        message("Taxonomy restoration requested: ", restored_taxo)
+
+      } else {
+
+        taxo_restore_pending(FALSE)
+
+        warning(
+          "Could not recover taxonomy from the saved session. ",
+          "Please check the saved KEGG enrichment results."
         )
       }
 
-      # restore pathview independently (NO input dependency)
-      if (!is.null(sess$pathview)) {
-        pathview_results(sess$pathview)
-      }
-
-      # OPTIONAL: restore comparison safely
+      # 4. Restore comparison
       if (!is.null(sess$comparison)) {
+
         updateRadioButtons(
           session,
           "comparison",
           selected = sess$comparison
         )
       }
-    })
 
-    # observe({
-    #
-    #   sess <- restored_session()
-    #
-    #   req(sess)
-    #
-    #   if (!is.null(sess$taxo)) {
-    #
-    #     saved_taxo(sess$taxo)
-    #
-    #     updateRadioButtons(
-    #       session,
-    #       "taxo",
-    #       selected = sess$taxo
-    #     )
-    #
-    #   }
-    #
-    # })
-    #
-    # observeEvent(input$taxo, {
-    #
-    #   sess <- restored_session()
-    #
-    #   req(sess)
-    #
-    #   if (!is.null(sess$pathview)) {
-    #
-    #     pathview_results(sess$pathview)
-    #
-    #   }
-    #
-    # }, once = TRUE)
+      message("=== PATHVIEW SESSION RESTORATION COMPLETED ===")
+
+    }, ignoreInit = FALSE, once = TRUE)
+
+
+    observeEvent(input$taxo, {
+      message("=== TAXONOMY INPUT CHANGED ===")
+      message("New input$taxo: '", input$taxo, "'")
+    }, ignoreInit = TRUE)
+
+
+    # ---- WAIT FOR TAXONOMY RESTORATION ----
+
+    observeEvent(input$taxo, {
+
+      if (isTRUE(taxo_restore_pending()) &&
+          identical(input$taxo, saved_taxo())) {
+
+        taxo_restore_pending(FALSE)
+
+        message("Taxonomy restoration completed")
+      }
+
+    }, ignoreInit = TRUE)
+
 
     observeEvent(input$run_pathview, {
 
@@ -465,8 +541,10 @@ mod_merg_server <- function(id, glob, phos, restored_session = reactive(NULL)){
       comparison                  = reactive(input$comparison),
       kegg_selector               = reactive(input$kegg_selector),
 
+
       taxo_kegg = reactive({
 
+        req(!taxo_restore_pending())
         req(input$taxo)
 
         if (input$taxo == "human") {
@@ -479,15 +557,22 @@ mod_merg_server <- function(id, glob, phos, restored_session = reactive(NULL)){
 
       AnnotDb = reactive({
 
+        message("=== DEBUG AnnotDb reactive ===")
+        message("input$taxo: ", input$taxo)
+        message("taxo_restore_pending: ", taxo_restore_pending())
+
+        req(!taxo_restore_pending())
         req(input$taxo)
 
         if (input$taxo == "human") {
+          message("Returning human annotation database")
           org.Hs.eg.db::org.Hs.eg.db
         } else {
+          message("Returning mouse annotation database")
           org.Mm.eg.db::org.Mm.eg.db
         }
-
       }),
+
 
       pathview_dir = pathview_dir
     )
@@ -495,39 +580,25 @@ mod_merg_server <- function(id, glob, phos, restored_session = reactive(NULL)){
     ###############################################################
     ################# UPDATE KEGG SELECTOR  #######################
     ###############################################################
+
+    #==============================================================
+    # UPDATE KEGG SELECTOR AFTER SESSION RESTORATION
+    #==============================================================
+
     observeEvent(
-      { pathview_results(); input$comparison },
+      list(pathview_results(), input$comparison),
       {
 
         req(pathview_results(), input$comparison)
 
+        message("=== UPDATING KEGG SELECTOR ===")
+        message("Comparison: ", input$comparison)
+
         comp_res <- pathview_results()$enrichment[[input$comparison]]
 
-        if (is.null(comp_res)) {
-
-          updateSelectizeInput(
-            session,
-            "kegg_selector",
-            choices = character(0),
-            selected = character(0)
-          )
-
-          return()
-        }
-
-        if (is.null(comp_res$KEGG)) {
-
-          updateSelectizeInput(
-            session,
-            "kegg_selector",
-            choices = character(0),
-            selected = character(0)
-          )
-
-          return()
-        }
-
-        if (is.null(comp_res$KEGG@result) ||
+        if (is.null(comp_res) ||
+            is.null(comp_res$KEGG) ||
+            is.null(comp_res$KEGG@result) ||
             nrow(comp_res$KEGG@result) == 0) {
 
           updateSelectizeInput(
@@ -537,24 +608,38 @@ mod_merg_server <- function(id, glob, phos, restored_session = reactive(NULL)){
             selected = character(0)
           )
 
+          message("No KEGG enrichment available")
+
           return()
         }
 
         kegg_res <- comp_res$KEGG@result
 
+        kegg_choices <- setNames(
+          kegg_res$ID,
+          kegg_res$Description
+        )
+
+        message("Available KEGG pathways: ", length(kegg_choices))
+
+        # Select the first available pathway
+        selected_pathway <- kegg_res$ID[1]
+
         updateSelectizeInput(
           session,
           "kegg_selector",
-          choices = setNames(
-            kegg_res$ID,
-            kegg_res$Description
-          ),
-          selected = kegg_res$ID[1],
+          choices = kegg_choices,
+          selected = selected_pathway,
           server = TRUE
         )
+
+        message("Selected KEGG pathway: ", selected_pathway)
+
       },
-      ignoreInit = TRUE
+
+      ignoreInit = FALSE
     )
+
 
     #==============================================================
     # EXPORT

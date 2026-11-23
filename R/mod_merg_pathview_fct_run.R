@@ -298,12 +298,13 @@ compute_pathview <- function(
 #'
 #' @export
 
+
 generate_pathview_png <- function(
-  geneList,
-  pathway_id,
-  taxo_kegg,
-  out_dir,
-  suffix
+    geneList,
+    pathway_id,
+    taxo_kegg,
+    out_dir,
+    suffix
 ) {
 
   stopifnot(taxo_kegg %in% c("hsa", "mmu"))
@@ -311,40 +312,96 @@ generate_pathview_png <- function(
   stopifnot(length(pathway_id) == 1)
   stopifnot(pathway_id != "")
 
+  # Ensure output directory exists
+  if (!dir.exists(out_dir)) {
+    dir.create(
+      out_dir,
+      recursive = TRUE,
+      showWarnings = FALSE
+    )
+  }
+
+  # Remove invalid entries
+  geneList <- geneList[
+    !is.na(geneList) &
+      !is.na(names(geneList))
+  ]
+
+  stopifnot(length(geneList) > 0)
+
+  # Avoid zero-width color limits
+  max_fc <- max(abs(geneList), na.rm = TRUE)
+
+  if (!is.finite(max_fc) || max_fc == 0) {
+    max_fc <- 1
+  }
+
   cat("\n=== GENERATE PATHVIEW ===\n")
   cat("pathway_id =", pathway_id, "\n")
   cat("taxo =", taxo_kegg, "\n")
   cat("out_dir =", out_dir, "\n")
   cat("gene count =", length(geneList), "\n")
+  cat("suffix =", suffix, "\n")
+  message("Working directory before Pathview: ", getwd())
+  message("PathView output directory: ",
+          normalizePath(out_dir, winslash = "/", mustWork = TRUE))
 
+  # Generate KEGG pathway
+  withr::with_dir(
+    out_dir,
 
-  withr::with_dir(out_dir,
-                  pathview::pathview(
-                  gene.data   = geneList,
-                  pathway.id  = pathway_id,
-                  species     = taxo_kegg,
-                  gene.idtype = "entrez",
-                  limit      = list(gene = c(-max(abs(geneList)), max(abs(geneList))), cpd = 1),
-                  kegg.native = TRUE,
-                  out.suffix  = suffix,
-                  kegg.dir    = out_dir,
-                  low  = list(gene = "green"),
-                  mid  = list(gene = "gray"),
-                  high = list(gene = "red")
+    pathview::pathview(
+      gene.data   = geneList,
+      pathway.id  = pathway_id,
+      species     = taxo_kegg,
+      gene.idtype = "entrez",
+      limit       = list(
+        gene = c(-max_fc, max_fc),
+        cpd = 1
+      ),
+      kegg.native = TRUE,
+      out.suffix  = suffix,
+      kegg.dir    = out_dir,
+      low         = list(gene = "green"),
+      mid         = list(gene = "gray"),
+      high        = list(gene = "red")
+    )
+  )
+
+  message("Working directory after Pathview: ", getwd())
+
+  message("PNG files in output directory:")
+  print(list.files(
+    out_dir,
+    pattern = "\\.png$",
+    full.names = TRUE
   ))
 
-  cat("\nFiles after pathview:\n")
-  print(list.files(out_dir, full.names = TRUE))
-
-  files <- list.files(
+  # Retrieve the newly generated PNG
+  png_files <- list.files(
     out_dir,
-    pattern = paste0(pathway_id, ".*", suffix, ".*\\.png$"),
+    pattern = "\\.png$",
     full.names = TRUE
   )
 
-  if (length(files) == 0) {
-    stop("Pathview PNG not found in: ", out_dir)
+  matching_files <- png_files[
+    grepl(pathway_id, basename(png_files), fixed = TRUE) &
+      grepl(suffix, basename(png_files), fixed = TRUE)
+  ]
+
+  if (length(matching_files) == 0) {
+    stop(
+      "Pathview PNG not found for pathway ",
+      pathway_id,
+      " with suffix ",
+      suffix,
+      " in: ",
+      out_dir
+    )
   }
 
-  files[1]
+  cat("Generated PNG:", matching_files[1], "\n")
+
+  return(matching_files[1])
 }
+

@@ -142,9 +142,30 @@ mod_merg_pathview_server <- function(id,
     # ---- Build geneList for Pathview ----
     geneList_pathview <- reactive({
 
-      req(kinsub_selected_results(), AnnotDb())
+      message("\n=== DEBUG geneList_pathview ===")
 
-      cat("\nMODULE INPUT CHECK\n")
+      df <- kinsub_selected_results()
+
+      message("KinSub results NULL: ", is.null(df))
+
+      if (!is.null(df)) {
+        message("KinSub rows: ", nrow(df))
+        message("KinSub columns: ", paste(names(df), collapse = ", "))
+      }
+
+      message("Retrieving annotation database...")
+
+      annot <- AnnotDb()
+
+      message("Annotation database retrieved")
+      message("Annotation database NULL: ", is.null(annot))
+      message("Annotation database class: ", paste(class(annot), collapse = ", "))
+
+      message("Annotation database NULL: ", is.null(annot))
+
+      req(!is.null(df), nrow(df) > 0, !is.null(annot))
+
+      message("KinSub results and annotation database validated")
 
       print(is.null(kinsub_selected_results()))
 
@@ -170,7 +191,7 @@ mod_merg_pathview_server <- function(id,
       }
 
       entrez <- AnnotationDbi::mapIds(
-        AnnotDb(),
+        annot,
         keys      = genes,
         column    = "ENTREZID",
         keytype   = "SYMBOL",
@@ -215,28 +236,23 @@ mod_merg_pathview_server <- function(id,
 
     })
 
+
     # ---- Generate Pathview PNG when KEGG changes ----
+
     pathview_png <- reactive({
 
-      message(">>> pathview_png triggered")
+      message("=== REGENERATING KEGG PATHWAY ===")
 
-      message("STEP 1")
+      # 1. Rebuild geneList from saved KinSub results
       geneList <- geneList_pathview()
-
-      message("STEP 2")
 
       validate(
         need(!is.null(geneList), "No genes available"),
         need(length(geneList) > 0, "No enriched phosphosites")
       )
 
-      message("STEP 3")
-
+      # 2. Retrieve selected KEGG pathway
       pid <- kegg_selector()
-
-      print(pid)
-
-      message("STEP 4")
 
       validate(
         need(!is.null(pid), "No KEGG pathway selected"),
@@ -245,17 +261,51 @@ mod_merg_pathview_server <- function(id,
         need(nchar(trimws(pid)) > 0, "Empty KEGG pathway ID")
       )
 
-      message("STEP 5")
+      # 3. Retrieve taxonomy and output directory
+      species <- taxo_kegg()
+      out_dir <- pathview_dir
 
-      generate_pathview_png(
+      req(species, out_dir)
+
+      # Ensure directory exists
+      if (!dir.exists(out_dir)) {
+        dir.create(
+          out_dir,
+          recursive = TRUE,
+          showWarnings = FALSE
+        )
+      }
+
+      # 4. Generate a fresh pathway image
+      message("Pathway ID: ", pid)
+      message("Species: ", species)
+      message("Genes: ", length(geneList))
+      message("Output directory: ", out_dir)
+
+      img <- generate_pathview_png(
         geneList   = geneList,
         pathway_id = pid,
-        taxo_kegg  = taxo_kegg(),
-        out_dir    = pathview_dir(),
-        suffix     = paste0(comparison(), "_pathview")
+        taxo_kegg  = species,
+        out_dir    = out_dir,
+        suffix = paste0(
+          comparison(),
+          "_pathview_",
+          basename(tempfile(pattern = "generation_"))
+        )
       )
 
+      # 5. Validate generated image
+      validate(
+        need(!is.null(img), "Pathview generation failed"),
+        need(file.exists(img), "Generated Pathview PNG not found")
+      )
+
+      message("Pathway successfully generated: ", img)
+
+      return(img)
+
     })
+
 
 
     # ---- Render Pathview image ----
